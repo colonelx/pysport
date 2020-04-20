@@ -47,6 +47,7 @@ from sportorg.modules.ocad.ocad import OcadImportException
 from sportorg.modules.sfr.sfrreader import SFRReaderClient
 from sportorg.modules.sportident.sireader import SIReaderClient
 from sportorg.modules.sportiduino.sportiduino import SportiduinoClient
+from sportorg.modules.lzfox.lzfoxreader import LZFoxReaderClient
 from sportorg.modules.teamwork import Teamwork
 from sportorg.modules.telegram.telegram import TelegramClient
 from sportorg.modules.updater import checker
@@ -369,6 +370,13 @@ class SFRReadoutAction(Action):
         self.app.interval()
 
 
+class LZFoxReadoutAction(Action):
+    def execute(self):
+        LZFoxReaderClient().toggle()
+        time.sleep(0.5)
+        self.app.interval()
+
+
 class CreateReportAction(Action):
     def execute(self):
         ReportDialog().exec_()
@@ -660,6 +668,7 @@ __all__ = [
     'SPORTidentReadoutAction',
     'SportiduinoReadoutAction',
     'SFRReadoutAction',
+    'LZFoxReadoutAction',
     'CreateReportAction',
     'SplitPrintoutAction',
     'RecheckingAction',

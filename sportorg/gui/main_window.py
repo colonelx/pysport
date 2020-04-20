@@ -34,6 +34,7 @@ from sportorg.gui.utils.custom_controls import messageBoxQuestion
 from sportorg.language import _
 from sportorg.modules.sportident.sireader import SIReaderClient
 from sportorg.modules.sportiduino.sportiduino import SportiduinoClient
+from sportorg.modules.lzfox.lzfoxreader import LZFoxReaderClient
 from sportorg.modules.teamwork import Teamwork
 from sportorg.modules.telegram.telegram import TelegramClient
 
@@ -141,6 +142,7 @@ class MainWindow(QMainWindow):
         SIReaderClient().set_call(self.add_sportident_result_from_sireader)
         SportiduinoClient().set_call(self.add_sportiduino_result_from_reader)
         SFRReaderClient().set_call(self.add_sfr_result_from_reader)
+        LZFoxReaderClient().set_call(self.add_lzfox_result_from_reader)
 
         self.service_timer = QTimer(self)
         self.service_timer.timeout.connect(self.interval)
@@ -455,6 +457,9 @@ class MainWindow(QMainWindow):
     def add_sfr_result_from_reader(self, result):
         self.add_sportident_result_from_sireader(result)
 
+    def add_lzfox_result_from_reader(self, result):
+        self.add_sportident_result_from_sireader(result)
+
     def add_sportiduino_result_from_reader(self, result):
         self.add_sportident_result_from_sireader(result)
 
@@ -462,7 +467,7 @@ class MainWindow(QMainWindow):
         try:
             race().update_data(command.data)
             logging.info(repr(command.data))
-            if 'object' in command.data and command.data['object'] in ['ResultManual', 'ResultSportident', 'ResultSFR', 'ResultSportiduino']:
+            if 'object' in command.data and command.data['object'] in ['ResultManual', 'ResultSportident', 'ResultSFR', 'ResultLZFox', 'ResultSportiduino']:
                 ResultCalculation(race()).process_results()
             Broker().produce('teamwork_recieving', command.data)
             self.refresh()

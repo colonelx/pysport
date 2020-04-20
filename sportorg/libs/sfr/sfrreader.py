@@ -318,7 +318,7 @@ class SFRReaderReadout(SFRReader):
     """Class for SFR card readout. Reads out the card"""
 
     def __init__(self, *args, **kwargs):
-        super(type(self), self).__init__(*args, **kwargs)
+        super(type(self), self).__init__(*args, **kwargs) 
         self.last_card = None
 
     def poll_card(self):

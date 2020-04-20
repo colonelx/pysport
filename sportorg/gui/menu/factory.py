@@ -44,6 +44,7 @@ class Factory(object):
             SPORTidentReadoutAction(),
             SportiduinoReadoutAction(),
             SFRReadoutAction(),
+            LZFoxReadoutAction(),
             CreateReportAction(),
             SplitPrintoutAction(),
             RecheckingAction(),

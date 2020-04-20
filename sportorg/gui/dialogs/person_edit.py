@@ -111,7 +111,7 @@ class PersonEditDialog(QDialog):
         self.label_card = QLabel(_('Punch card #'))
         self.item_card = QSpinBox()
         self.item_card.setMinimum(0)
-        self.item_card.setMaximum(9999999)
+        self.item_card.setMaximum(0x7fffffff)
         self.item_card.valueChanged.connect(self.check_card)
         self.layout.addRow(self.label_card, self.item_card)
 

@@ -238,14 +238,14 @@ class SIReaderClient(object):
                      re.match('ttyS.*|ttyUSB.*', f)]
         elif platform.system() == 'Windows':
             scan_ports = ['COM' + str(i) for i in range(48)]
-
+        print(scan_ports)
         for p in scan_ports:
             try:
                 com = serial.Serial(p, 38400, timeout=5)
                 com.close()
                 ports.append(p)
-            except serial.SerialException:
-                continue
+            except serial.SerialException as e:
+                print(e)
 
         return ports
 

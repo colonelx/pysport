@@ -322,6 +322,11 @@ def menu_list():
                     'action': 'SFRReadoutAction'
                 },
                 {
+                    'title': _('on/off LZFOX readout'),
+                    'icon': config.icon_dir('lzfox.png'),
+                    'action': 'LZFoxReadoutAction'
+                },
+                {
                     'title': _('Teamwork'),
                     'icon': config.icon_dir('network.svg'),
                     'actions': [

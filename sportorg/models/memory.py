@@ -31,6 +31,7 @@ class SystemType(Enum):
     SPORTIDENT = 2
     SFR = 3
     SPORTIDUINO = 4
+    LZFOX = 5
 
     def __str__(self):
         return "%s" % self._name_
@@ -723,7 +724,7 @@ class Result:
         return self.status == ResultStatus.OK or self.status == ResultStatus.RESTORED
 
     def is_punch(self):
-        return self.is_sportident() or self.is_sfr() or self.is_sportiduino()
+        return self.is_sportident() or self.is_sfr() or self.is_sportiduino() or self.is_lzfox()
 
     def is_sportident(self):
         return self.system_type == SystemType.SPORTIDENT
@@ -733,6 +734,9 @@ class Result:
 
     def is_sportiduino(self):
         return self.system_type == SystemType.SPORTIDUINO
+
+    def is_lzfox(self):
+        return self.system_type == SystemType.LZFOX
 
     def is_manual(self):
         return self.system_type == SystemType.MANUAL
@@ -1018,6 +1022,9 @@ class ResultSFR(ResultSportident):
 class ResultSportiduino(ResultSportident):
     system_type = SystemType.SPORTIDUINO
 
+class ResultLZFox(ResultSportident):
+    system_type = SystemType.LZFOX
+
 
 class Person(Model):
     def __init__(self):
@@ -1191,6 +1198,7 @@ class Race(Model):
         'ResultSportident': ResultSportident,
         'ResultSFR': ResultSFR,
         'ResultSportiduino': ResultSportiduino,
+        'ResultLZFox': ResultLZFox,
         'Group': Group,
         'Course': Course,
         'Organization': Organization,
@@ -1220,6 +1228,7 @@ class Race(Model):
             'ResultSportident': self.results,
             'ResultSFR': self.results,
             'ResultSportiduino': self.results,
+            'ResultLZFox': self.results,
             'Group': self.groups,
             'Course': self.courses,
             'Organization': self.organizations,
@@ -1271,7 +1280,7 @@ class Race(Model):
         if dict_obj['object'] == 'Person':
             obj.group = self.get_obj('Group', dict_obj['group_id'])
             obj.organization = self.get_obj('Organization', dict_obj['organization_id'])
-        elif dict_obj['object'] in ['Result', 'ResultManual', 'ResultSportident', 'ResultSFR', 'ResultSportiduino']:
+        elif dict_obj['object'] in ['Result', 'ResultManual', 'ResultSportident', 'ResultSFR', 'ResultLZFox', 'ResultSportiduino']:
             obj.person = self.get_obj('Person', dict_obj['person_id'])
         elif dict_obj['object'] == 'Group':
             obj.course = self.get_obj('Course', dict_obj['course_id'])
