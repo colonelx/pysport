@@ -124,16 +124,32 @@ class LZFoxReader(object):
         
     def _parse_punch_data(self, data):
         punches = re.findall('(\d+,\d+)', data)
+        last_start = self._find_last_start_dt(data)
+        self.ret['punches'] = []
         for punch in punches:
             row = punch.split(',')
             control = int(row[0])
             time = datetime.fromtimestamp(int(row[1]))
-            if control == self.PUNCH_START:
-                self.ret['start'] = time
-            elif control == self.PUNCH_FINISH:
-                self.ret['finish'] = time
-            else:
-                self.ret['punches'].append((control, time))
+            if last_start <= time:
+                if control == self.PUNCH_START:
+                    self.ret['start'] = time
+                elif control == self.PUNCH_FINISH:
+                    self.ret['finish'] = time
+                else:
+                    self.ret['punches'].append((control, time))
+
+    def _find_last_start_dt(self, data):
+        punches = re.findall('(\d+,\d+)', data)
+        last_time = 0
+        for punch in punches:
+            row = punch.split(',')
+            control = int(row[0])
+            time = int(row[1])
+            if control == self.PUNCH_START and time > last_time:
+                last_time = time
+        return datetime.fromtimestamp(last_time)
+                
+
 
     def _read_serial(self):
         read_data = self._serial.readline()
