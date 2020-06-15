@@ -205,8 +205,8 @@ class ResultEditDialog(QDialog):
             race().results.insert(0, result)
 
         if result.is_punch():
-            if result.card_number != self.item_card_number.value():
-                result.card_number = self.item_card_number.value()
+            if result.card_number != int(self.item_card_number.text()):
+                result.card_number = int(self.item_card_number.value())
 
             new_splits = self.splits.splits()
             if len(result.splits) == len(new_splits):
