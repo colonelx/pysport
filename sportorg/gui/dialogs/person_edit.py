@@ -109,10 +109,10 @@ class PersonEditDialog(QDialog):
 
         self.is_ok['card'] = True
         self.label_card = QLabel(_('Punch card #'))
-        self.item_card = QSpinBox()
-        self.item_card.setMinimum(0)
-        self.item_card.setMaximum(0x7fffffff)
-        self.item_card.valueChanged.connect(self.check_card)
+        self.item_card = QLineEdit()
+        #self.item_card.setMinimum(0)
+        #self.item_card.setMaximum(0x7fffffff)
+        self.item_card.textChanged.connect(self.check_card)
         self.layout.addRow(self.label_card, self.item_card)
 
         self.label_card_info = QLabel('')
@@ -203,7 +203,7 @@ class PersonEditDialog(QDialog):
             self.button_ok.setEnabled(True)
 
     def check_card(self):
-        number = self.item_card.value()
+        number = int(self.item_card.text())
         self.label_card_info.setText('')
         if number:
             person = None
@@ -254,7 +254,7 @@ class PersonEditDialog(QDialog):
             self.item_start_group.setValue(int(self.current_object.start_group))
 
         if self.current_object.card_number:
-            self.item_card.setValue(self.current_object.card_number)
+            self.item_card.setText(str(self.current_object.card_number))
 
         self.item_out_of_competition.setChecked(self.current_object.is_out_of_competition)
         self.item_paid.setChecked(self.current_object.is_paid)
@@ -305,9 +305,9 @@ class PersonEditDialog(QDialog):
         if person.start_group != self.item_start_group.value() and self.item_start_group.value():
             person.start_group = self.item_start_group.value()
 
-        if (not person.card_number or int(person.card_number) != self.item_card.value()) \
-                and self.item_card.value:
-            race().person_card_number(person, self.item_card.value())
+        if (not person.card_number or int(person.card_number) != int(self.item_card.text())) \
+                and int(self.item_card.text()):
+            race().person_card_number(person, int(self.item_card.text()))
 
         if person.is_out_of_competition != self.item_out_of_competition.isChecked():
             person.is_out_of_competition = self.item_out_of_competition.isChecked()

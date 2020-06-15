@@ -53,8 +53,8 @@ class ResultEditDialog(QDialog):
         self.item_created_at.setDisplayFormat(self.time_format)
         self.item_created_at.setReadOnly(True)
 
-        self.item_card_number = QSpinBox()
-        self.item_card_number.setMaximum(9999999)
+        self.item_card_number = QLineEdit()
+        #self.item_card_number.setMaximum(9999999)
 
         self.item_bib = QSpinBox()
         self.item_bib.setMaximum(Limit.BIB)
@@ -166,7 +166,7 @@ class ResultEditDialog(QDialog):
     def set_values_from_model(self):
         if self.current_object.is_punch():
             if self.current_object.card_number:
-                self.item_card_number.setValue(int(self.current_object.card_number))
+                self.item_card_number.setText(str(self.current_object.card_number))
             self.splits.splits(self.current_object.splits)
             self.splits.show()
         if self.current_object.created_at:

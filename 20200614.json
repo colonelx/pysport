@@ -1,0 +1,28 @@
+{
+  "current_race": 0,
+  "races": [
+    {
+      "courses": [],
+      "data": {
+        "chief_referee": "",
+        "description": "",
+        "end_datetime": null,
+        "location": "",
+        "race_type": 0,
+        "relay_leg_count": 3,
+        "secretary": "",
+        "start_datetime": null,
+        "title": "",
+        "url": ""
+      },
+      "groups": [],
+      "id": "bb6f05d7-6647-4fa0-a5dc-ba0fc82e5bd6",
+      "object": "Race",
+      "organizations": [],
+      "persons": [],
+      "results": [],
+      "settings": {}
+    }
+  ],
+  "version": "1.5.0.0"
+}
