@@ -22,13 +22,11 @@
 sfrreader.py - Classes to read out SFR card data from master HID stations.
 """
 import platform
-
+from datetime import datetime
 from time import sleep
 
 if platform.system() == 'Windows':
-    from pywinusb.hid import HidDeviceFilter, HidDevice
-
-from datetime import datetime
+    from pywinusb.hid import HidDevice, HidDeviceFilter
 
 
 class SFRReader(object):
@@ -46,9 +44,9 @@ class SFRReader(object):
     """Base protocol functions and constants to interact with SFR Stations."""
 
     # Protocol characters
-    CMD_INIT = 0x3f
-    CMD_START = 0xfd
-    CMD_END = 0xfe
+    CMD_INIT = 0x3F
+    CMD_START = 0xFD
+    CMD_END = 0xFE
 
     CMD_REQUEST_CODE = 0x01
     CMD_BEEP_CODE = 0x03
@@ -63,11 +61,11 @@ class SFRReader(object):
 
     def __init__(self, debug=False, logfile=None, logger=None):
         """Initializes communication with sfr station via HID interface.
-            We have no information, how to manage 2 connected stations
+        We have no information, how to manage 2 connected stations
         """
         self._device = None  # Type HidDevice
         self._debug = debug
-        if logfile is not None:
+        if logfile:
             self._logfile = open(logfile, 'ab')
         else:
             self._logfile = None
@@ -93,7 +91,7 @@ class SFRReader(object):
         length = len(data)
         for i in range(length):
             csw = int(b1) + int(data[i])
-            b1 = csw & 0xff
+            b1 = csw & 0xFF
             b1 += csw // 0x100
         return b1
 
@@ -106,7 +104,6 @@ class SFRReader(object):
 
     def is_device_connected(self):
         if self._device and isinstance(self._device, HidDevice):
-            assert isinstance(self._device, HidDevice)
             if self._device.is_plugged() and self._device.is_opened():
                 return True
         return False
@@ -119,7 +116,6 @@ class SFRReader(object):
         buffer = self.get_hid_buffer(command)
 
         hid_device = self._device
-        assert isinstance(hid_device, HidDevice)
         if self.is_device_connected():
             if callback:
                 # Wait for the data response, callback is processed in HID data handler
@@ -137,17 +133,25 @@ class SFRReader(object):
                     count = 1
                     while self._block and count < self.TIMEOUT_LIMIT:
                         if self.SFR_DEBUG:
-                            print('sfrreader.send_command: sleeping, waiting for response')
+                            print(
+                                'sfrreader.send_command: sleeping, waiting for response'
+                            )
                         sleep(self.TIMEOUT_STEP)
                         count += 1
 
                     end = datetime.now()
                     time_used = end - start
                     if self.SFR_DEBUG:
-                        print('sfrreader.send_command: ended in ' + str(time_used.microseconds / 1000) + ' ms')
+                        print(
+                            'sfrreader.send_command: ended in '
+                            + str(time_used.microseconds / 1000)
+                            + ' ms'
+                        )
                 except Exception as e:
                     if self.SFR_DEBUG:
-                        print('sfrreader.send_command: device disconnected during command')
+                        print(
+                            'sfrreader.send_command: device disconnected during command'
+                        )
                     self._logger.error(str(e))
                     self.disconnect()
 
@@ -162,7 +166,7 @@ class SFRReader(object):
 
     def _data_handler(self, data):
         if self.SFR_DEBUG:
-            print("sfrreader.data_handler: Raw data: {0}".format(data))
+            print('sfrreader.data_handler: Raw data: {0}'.format(data))
 
         last_command = self._last_command
 
@@ -171,7 +175,9 @@ class SFRReader(object):
             # correct answer, card detected
 
             if self._logger:
-                self._logger.debug("sfrreader.data_handler ==>> command  '%s' " % last_command)
+                self._logger.debug(
+                    "sfrreader.data_handler ==>> command  '%s' " % last_command
+                )
                 self._logger.debug("sfrreader.data_handler <<== response '%s' " % data)
 
             self._is_card_connected = True
@@ -256,12 +262,13 @@ class SFRReader(object):
             self.ret['punches'].append((code, time))
 
     def _connect_reader(self):
-        """Connect to SFR Reader.
-        """
+        """Connect to SFR Reader."""
         if platform.system() != 'Windows':
             raise SFRReaderException('Unsupported platform: %s' % platform.system())
 
-        hid_filter = HidDeviceFilter(vendor_id=self.VENDOR_ID, product_id=self.PRODUCT_ID)
+        hid_filter = HidDeviceFilter(
+            vendor_id=self.VENDOR_ID, product_id=self.PRODUCT_ID
+        )
         devices = hid_filter.get_devices()
 
         if devices:
@@ -272,15 +279,15 @@ class SFRReader(object):
             self.beep(delay=0.3, count=3)
 
             if self._logger:
-                self._logger.debug("SFR station connected")
+                self._logger.debug('SFR station connected')
 
             device.set_raw_data_handler(self._data_handler)
         else:
             if self._logger:
-                self._logger.debug("SFR station not found or unavailable")
+                self._logger.debug('SFR station not found or unavailable')
 
     def __del__(self):
-        if self._device is not None:
+        if self._device:
             self._device.close()
 
     @staticmethod
@@ -296,7 +303,9 @@ class SFRReader(object):
                 return None
 
             now = datetime.now()
-            ret = datetime(minute=m, second=s, hour=h, day=now.day, month=now.month, year=now.year)
+            ret = datetime(
+                minute=m, second=s, hour=h, day=now.day, month=now.month, year=now.year
+            )
             return ret
         return None
 
@@ -359,7 +368,10 @@ class SFRReaderReadout(SFRReader):
 
             if not self.is_card_connected():  # card was removed during readout
                 if self.SFR_DEBUG:
-                    print('sfrreader.read_card: card was removed during readout, pos=' + str(i))
+                    print(
+                        'sfrreader.read_card: card was removed during readout, pos='
+                        + str(i)
+                    )
                 self._last_card = None  # to allow rereading
                 self._reading_process = False
                 return

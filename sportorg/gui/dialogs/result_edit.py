@@ -1,32 +1,41 @@
 import logging
-
 from abc import abstractmethod
-
 from datetime import datetime
 
 from PySide2.QtCore import Qt
 from PySide2.QtGui import QIcon
-from PySide2.QtWidgets import QFormLayout, QLabel, QLineEdit, QDialog, \
-    QTimeEdit, QSpinBox, QGroupBox, QTextEdit, QDialogButtonBox, QComboBox
+from PySide2.QtWidgets import (
+    QComboBox,
+    QDialog,
+    QDialogButtonBox,
+    QFormLayout,
+    QGroupBox,
+    QLabel,
+    QLineEdit,
+    QScrollArea,
+    QSpinBox,
+    QTextEdit,
+    QTimeEdit,
+    QVBoxLayout,
+    QWidget,
+)
 
 from sportorg import config
 from sportorg.gui.dialogs.person_edit import PersonEditDialog
 from sportorg.gui.global_access import GlobalAccess
 from sportorg.gui.utils.custom_controls import AdvComboBox
-from sportorg.language import _
+from sportorg.language import translate
 from sportorg.models.constant import StatusComments
-from sportorg.models.memory import race, Result, find, ResultStatus, Person, Limit, Split
+from sportorg.models.memory import Limit, ResultStatus, Split, find, race
 from sportorg.models.result.result_calculation import ResultCalculation
 from sportorg.models.result.result_checker import ResultChecker, ResultCheckerException
 from sportorg.models.result.split_calculation import GroupSplits
-from sportorg.modules.teamwork import Teamwork
-from sportorg.utils.time import time_to_qtime, time_to_otime, hhmmss_to_time
+from sportorg.utils.time import hhmmss_to_time, time_to_otime, time_to_qtime
 
 
 class ResultEditDialog(QDialog):
     def __init__(self, result, is_new=False):
         super().__init__(GlobalAccess().get_main_window())
-        assert (isinstance(result, Result))
         self.current_object = result
         self.is_new = is_new
 
@@ -41,13 +50,19 @@ class ResultEditDialog(QDialog):
         return super().exec_()
 
     def init_ui(self):
-        self.setWindowTitle(_('Result'))
+        self.setWindowTitle(translate('Result'))
         self.setWindowIcon(QIcon(config.ICON))
         self.setSizeGripEnabled(False)
         self.setModal(True)
-        self.setMaximumWidth(300)
+        self.resize(450, 740)
+        self.setMaximumWidth(self.parent().size().width())
+        self.setMaximumHeight(self.parent().size().height())
 
-        self.layout = QFormLayout(self)
+        vertical_layout = QVBoxLayout(self)
+        scroll_area = QScrollArea()
+        content_widget = QWidget()
+
+        form_layout = QFormLayout(content_widget)
 
         self.item_created_at = QTimeEdit()
         self.item_created_at.setDisplayFormat(self.time_format)
@@ -96,21 +111,21 @@ class ResultEditDialog(QDialog):
         more24 = race().get_setting('time_format_24', 'less24') == 'more24'
         self.splits = SplitsText(more24=more24)
 
-        self.layout.addRow(QLabel(_('Created at')), self.item_created_at)
+        form_layout.addRow(QLabel(translate('Created at')), self.item_created_at)
         if self.current_object.is_punch():
-            self.layout.addRow(QLabel(_('Card')), self.item_card_number)
-        self.layout.addRow(QLabel(_('Bib')), self.item_bib)
-        self.layout.addRow(QLabel(''), self.label_person_info)
+            form_layout.addRow(QLabel(translate('Card')), self.item_card_number)
+        form_layout.addRow(QLabel(translate('Bib')), self.item_bib)
+        form_layout.addRow(QLabel(''), self.label_person_info)
         if more24:
-            self.layout.addRow(QLabel(_('Days')), self.item_days)
-        self.layout.addRow(QLabel(_('Start')), self.item_start)
-        self.layout.addRow(QLabel(_('Finish')), self.item_finish)
-        self.layout.addRow(QLabel(_('Credit')), self.item_credit)
-        self.layout.addRow(QLabel(_('Penalty')), self.item_penalty)
-        self.layout.addRow(QLabel(_('Penalty legs')), self.item_penalty_laps)
-        self.layout.addRow(QLabel(_('Result')), self.item_result)
-        self.layout.addRow(QLabel(_('Status')), self.item_status)
-        self.layout.addRow(QLabel(_('Comment')), self.item_status_comment)
+            form_layout.addRow(QLabel(translate('Days')), self.item_days)
+        form_layout.addRow(QLabel(translate('Start')), self.item_start)
+        form_layout.addRow(QLabel(translate('Finish')), self.item_finish)
+        form_layout.addRow(QLabel(translate('Credit')), self.item_credit)
+        form_layout.addRow(QLabel(translate('Penalty')), self.item_penalty)
+        form_layout.addRow(QLabel(translate('Penalty legs')), self.item_penalty_laps)
+        form_layout.addRow(QLabel(translate('Result')), self.item_result)
+        form_layout.addRow(QLabel(translate('Status')), self.item_status)
+        form_layout.addRow(QLabel(translate('Comment')), self.item_status_comment)
 
         if self.current_object.is_punch():
             start_source = race().get_setting('system_start_source', 'protocol')
@@ -119,7 +134,11 @@ class ResultEditDialog(QDialog):
                 self.item_start.setDisabled(True)
             if finish_source == 'cp':
                 self.item_finish.setDisabled(True)
-            self.layout.addRow(self.splits.widget)
+            form_layout.addRow(self.splits.widget)
+
+        scroll_area.setWidget(content_widget)
+        scroll_area.setWidgetResizable(True)
+        vertical_layout.addWidget(scroll_area)
 
         def cancel_changes():
             self.close()
@@ -133,17 +152,19 @@ class ResultEditDialog(QDialog):
 
         button_box = QDialogButtonBox(QDialogButtonBox.Ok | QDialogButtonBox.Cancel)
         self.button_ok = button_box.button(QDialogButtonBox.Ok)
-        self.button_ok.setText(_('OK'))
+        self.button_ok.setText(translate('OK'))
         self.button_ok.clicked.connect(apply_changes)
         self.button_cancel = button_box.button(QDialogButtonBox.Cancel)
-        self.button_cancel.setText(_('Cancel'))
+        self.button_cancel.setText(translate('Cancel'))
         self.button_cancel.clicked.connect(cancel_changes)
 
         if self.current_object.person:
-            button_person = button_box.addButton(_('Entry properties'), QDialogButtonBox.ActionRole)
+            button_person = button_box.addButton(
+                translate('Entry properties'), QDialogButtonBox.ActionRole
+            )
             button_person.clicked.connect(self.open_person)
 
-        self.layout.addRow(button_box)
+        vertical_layout.addWidget(button_box)
 
         self.show()
         self.item_bib.setFocus()
@@ -156,12 +177,16 @@ class ResultEditDialog(QDialog):
             if person:
                 info = person.full_name
                 if person.group:
-                    info = '{}\n{}: {}'.format(info, _('Group'), person.group.name)
+                    info = '{}\n{}: {}'.format(
+                        info, translate('Group'), person.group.name
+                    )
                 if person.card_number:
-                    info = '{}\n{}: {}'.format(info, _('Card'), person.card_number)
+                    info = '{}\n{}: {}'.format(
+                        info, translate('Card'), person.card_number
+                    )
                 self.label_person_info.setText(info)
             else:
-                self.label_person_info.setText(_('not found'))
+                self.label_person_info.setText(translate('not found'))
 
     def set_values_from_model(self):
         if self.current_object.is_punch():
@@ -170,16 +195,18 @@ class ResultEditDialog(QDialog):
             self.splits.splits(self.current_object.splits)
             self.splits.show()
         if self.current_object.created_at:
-            self.item_created_at.setTime(time_to_qtime(datetime.fromtimestamp(self.current_object.created_at)))
+            self.item_created_at.setTime(
+                time_to_qtime(datetime.fromtimestamp(self.current_object.created_at))
+            )
         if self.current_object.finish_time:
             self.item_finish.setTime(time_to_qtime(self.current_object.finish_time))
-        if self.current_object.start_time is not None:
+        if self.current_object.start_time:
             self.item_start.setTime(time_to_qtime(self.current_object.start_time))
         if self.current_object.finish_time:
             self.item_result.setText(str(self.current_object.get_result()))
-        if self.current_object.credit_time is not None:
+        if self.current_object.credit_time:
             self.item_credit.setTime(time_to_qtime(self.current_object.credit_time))
-        if self.current_object.penalty_time is not None:
+        if self.current_object.penalty_time:
             self.item_penalty.setTime(time_to_qtime(self.current_object.penalty_time))
         if self.current_object.penalty_laps:
             self.item_penalty_laps.setValue(self.current_object.penalty_laps)
@@ -246,8 +273,7 @@ class ResultEditDialog(QDialog):
             result.person = None
         elif cur_bib != new_bib:
             new_person = find(race().persons, bib=new_bib)
-            if new_person is not None:
-                assert isinstance(new_person, Person)
+            if new_person:
                 if result.person:
                     if result.is_punch():
                         result.person.card_number = 0
@@ -277,7 +303,6 @@ class ResultEditDialog(QDialog):
             except ResultCheckerException as e:
                 logging.error(str(e))
         ResultCalculation(race()).process_results()
-        Teamwork().send(result.to_dict())
 
 
 class SplitsObject:
@@ -299,7 +324,7 @@ class SplitsText(SplitsObject):
     def __init__(self, splits=None, more24=False):
         self._splits = splits
         self._more24 = more24
-        self._box = QGroupBox(_('Splits'))
+        self._box = QGroupBox(translate('Splits'))
         self._layout = QFormLayout()
         self._text = QTextEdit()
         self._text.setTabChangesFocus(True)
@@ -334,12 +359,14 @@ class SplitsText(SplitsObject):
         return self._splits
 
     def show(self):
-        splits = self._splits if self._splits is not None else []
+        splits = self._splits if self._splits else []
         text = ''
         time_accuracy = race().get_setting('time_accuracy', 0)
         for split in splits:
             if self._more24:
-                text += '{} {} {}\n'.format(split.code, split.time.to_str(time_accuracy), split.days)
+                text += '{} {} {}\n'.format(
+                    split.code, split.time.to_str(time_accuracy), split.days
+                )
             else:
                 text += '{} {}\n'.format(split.code, split.time.to_str(time_accuracy))
 

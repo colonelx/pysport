@@ -1,12 +1,10 @@
 from typing import IO
 from xml.etree import ElementTree
-from abc import ABCMeta
+
 from chardet.universaldetector import UniversalDetector
 
 
 class Item:
-    __metaclass__ = ABCMeta
-
     def __init__(self, **kwargs):
         self.init(**kwargs)
 
@@ -51,7 +49,7 @@ class CourseList(list):
 class ClassesV8:
     """
     Example:
-    
+
     M16;Normal Course;0;5.700;130;S1;0.219;117;0.412;150;0.502;107;0.155;63;0.113;93;0.176;99;0.183;97;0.488;98;0.659;64;0.661;140;0.191;52;0.198;87;0.391;132;0.249;95;0.098;116;0.152;90;0.179;47;0.216;120;0.280;115;0.229;F1
     Relay;Relay;1.1;3.300;205;S1;0.185;71;0.351;64;0.661;140;0.191;52;0.225;106;0.286;132;0.249;95;0.098;116;0.152;90;0.179;47;0.216;120;0.280;115;0.229;F1
     Relay;Relay;1.2;3.400;205;S1;0.219;117;0.246;64;0.733;70;0.207;52;0.198;87;0.341;56;0.281;95;0.098;116;0.152;90;0.179;47;0.216;120;0.280;115;0.229;F1
@@ -89,14 +87,14 @@ class ClassesV8:
 
     def parse(self, file):
         if not isinstance(file, str) and not isinstance(file, IO):
-            raise TypeError("file is not str or IO")
+            raise TypeError('file is not str or IO')
         if isinstance(file, str):
             try:
                 enc = self.detect_encoding(file)
                 with open(file, encoding=enc) as f:
                     content = f.readlines()
             except FileNotFoundError:
-                raise FileNotFoundError("Not found " + file)
+                raise FileNotFoundError('Not found ' + file)
         else:
             content = file.readlines()
         self._data = [x.strip() for x in content if x]
@@ -131,7 +129,7 @@ class ClassesV8:
     @staticmethod
     def get_courses(item):
         if not isinstance(item, str) and not isinstance(item, list):
-            raise TypeError("item is not string or list")
+            raise TypeError('item is not string or list')
         if isinstance(item, str):
             item = str(item).split(';')
         courses = CourseControlDict()
@@ -142,11 +140,17 @@ class ClassesV8:
         while (2 * i + 1) < limit:
             len_str = str(courses_split[2 * i]).replace(',', '.')
             if len_str and not len_str.replace('.', '').isdecimal():
-                raise OcadImportException('Incorrect length:' + len_str + ' in row ' + str(item))
+                raise OcadImportException(
+                    'Incorrect length:' + len_str + ' in row ' + str(item)
+                )
 
-            courses[i] = CourseControl(**{"order": i, "code": courses_split[2 * i + 1],
-                                          "length": float(len_str) if len(item[4])
-                                          else 0.0})
+            courses[i] = CourseControl(
+                **{
+                    'order': i,
+                    'code': courses_split[2 * i + 1],
+                    'length': float(len_str) if len(item[4]) else 0.0,
+                }
+            )
             i += 1
 
         return courses
@@ -156,12 +160,12 @@ class ClassesV8:
         def ifempty(o, default=None):
             if len(o):
                 return 0
-            if default is not None:
+            if default:
                 return default
             return None
 
         if not isinstance(item, str) and not isinstance(item, list):
-            raise TypeError("item is not string or list")
+            raise TypeError('item is not string or list')
         if isinstance(item, str):
             item = str(item).split(';')
 
@@ -170,19 +174,23 @@ class ClassesV8:
 
         len_str = str(item[3]).replace(',', '.')
         if len_str and not len_str.replace('.', '').isdecimal():
-            raise OcadImportException('Incorrect length:' + len_str + ' in row ' + str(item))
+            raise OcadImportException(
+                'Incorrect length:' + len_str + ' in row ' + str(item)
+            )
 
         climb_str = str(item[4]).replace(',', '.')
         if climb_str and not climb_str.replace('.', '').isdecimal():
-            raise OcadImportException('Incorrect climb:' + climb_str + ' in row ' + str(item))
+            raise OcadImportException(
+                'Incorrect climb:' + climb_str + ' in row ' + str(item)
+            )
 
         course = {
-            "group": item[0],
-            "course": item[1],
-            "bib": item[2],
-            "length": float(len_str) if len(item[3]) else 0.0,
-            "climb": float(climb_str) if len(item[4]) else 0.0,
-            "controls": ClassesV8.get_courses(item)
+            'group': item[0],
+            'course': item[1],
+            'bib': item[2],
+            'length': float(len_str) if len(item[3]) else 0.0,
+            'climb': float(climb_str) if len(item[4]) else 0.0,
+            'controls': ClassesV8.get_courses(item),
         }
 
         return Course(**course)
@@ -197,7 +205,7 @@ def parse_txt_v8(source):
 class CoursesText:
     """
     Example:
-    
+
     Normal Course	5.7	130	19	S1-117-150-107-63-93-99-97-98-64-140-52-87-132-95-116-90-47-120-115-F1
     Relay.1	3.3	 85	12	S1-(71/117/118)-64-(78/140/70)-52-(-(106-132/87-56))-95-116-90-47-120-115-F1
     """
@@ -208,7 +216,6 @@ class CoursesText:
 
 class IofXMLv3:
     def __init__(self, tree=None):
-        assert tree, ElementTree
         self._tree = tree
 
     def parse(self, source):
