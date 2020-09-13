@@ -1,0 +1,1375 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: SportOrg\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-12-11 00:13+0200\n"
+"PO-Revision-Date: 2019-12-11 00:26+0200\n"
+"Last-Translator: LZ1PPL\n"
+"Language-Team: \n"
+"Language: bg_BG\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Loco-Source-Locale: ru_RU\n"
+"X-Generator: Poedit 2.2.4\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Loco-Parser: loco_parse_po\n"
+"X-Poedit-Basepath: ../../../sportorg\n"
+"X-Poedit-SearchPath-0: .\n"
+
+msgid "About"
+msgstr "Относно  програмата"
+
+msgid "Contributors"
+msgstr "Разработчици"
+
+msgid "Home page"
+msgstr "Начална страница"
+
+msgid "Bib or Name"
+msgstr "Номер или име"
+
+msgid "OK"
+msgstr "ОК"
+
+msgid "Cancel"
+msgstr "Отказ"
+
+msgid "Group"
+msgstr "Група"
+
+msgid "Card"
+msgstr "Карта"
+
+msgid "not found"
+msgstr "не е намерен"
+
+msgid "Course properties"
+msgstr "Настройки на трасето"
+
+msgid "Name"
+msgstr "Име"
+
+msgid "Length(m)"
+msgstr "Дължина (м.)"
+
+msgid "Climb"
+msgstr "Денивелация"
+
+msgid "Point count"
+msgstr "Брой точки"
+
+msgid "Controls"
+msgstr "Контроли"
+
+msgid "Delete CP"
+msgstr "Delete CP"
+
+msgid "Number CP"
+msgstr "Number CP"
+
+msgid "Courses"
+msgstr "Дистанция"
+
+msgid "Race Results"
+msgstr "Резултати от състезанието"
+
+msgid "Ok"
+msgstr "ОК"
+
+msgid "Results"
+msgstr "Резултати"
+
+msgid "Filter Dialog"
+msgstr "Филтър"
+
+msgid "Team"
+msgstr "Отбор"
+
+msgid "Max rows count"
+msgstr "Максимално количество редове"
+
+msgid "Yes"
+msgstr "Да"
+
+msgid "No"
+msgstr "Не"
+
+msgid "Mass Edit Dialog"
+msgstr "Диалог за масово редактиране"
+
+msgid "Start group"
+msgstr "Стартова група"
+
+msgid "Comment"
+msgstr "Коментар"
+
+msgid "rented card"
+msgstr "предоставен чип"
+
+msgid "is paid"
+msgstr "платено"
+
+msgid "out of competition"
+msgstr "извън състезанието"
+
+msgid "personal participation"
+msgstr "лично участие"
+
+msgid "Event properties"
+msgstr "Настройки на състезанието"
+
+msgid "Main title"
+msgstr "Име на състезанието"
+
+msgid "Sub title"
+msgstr "Подзаглавие"
+
+msgid "Start date"
+msgstr "Начална дата"
+
+msgid "End date"
+msgstr "Крайна дата"
+
+msgid "Location"
+msgstr "Място на провеждане"
+
+msgid "Event type"
+msgstr "Тип на състезанието"
+
+msgid "Relay legs"
+msgstr "Брой етапи"
+
+msgid "Chief referee"
+msgstr "Главен съдия"
+
+msgid "Secretary"
+msgstr "Главен секретар"
+
+msgid "URL"
+msgstr "URL"
+
+msgid "Group properties"
+msgstr "Настройки на групите"
+
+msgid "Full name"
+msgstr "Пълно наименование"
+
+msgid "Course"
+msgstr "Дистанция"
+
+msgid "Is any course"
+msgstr "Произволна дистанция"
+
+msgid "Sex"
+msgstr "Пол"
+
+msgid "Min age"
+msgstr "Минимална възраст"
+
+msgid "Max age"
+msgstr "Максимална възраст"
+
+msgid "Min year"
+msgstr "Минимални години"
+
+msgid "Max year"
+msgstr "Максимални години"
+
+msgid "Max time"
+msgstr "Контролно време"
+
+msgid "Start corridor"
+msgstr "Стартов коридор"
+
+msgid "Order in corridor"
+msgstr "Ред в коридора"
+
+msgid "Start interval"
+msgstr "Стартов интервал"
+
+msgid "Start fee"
+msgstr "Стартова такса"
+
+msgid "Type"
+msgstr "Тип"
+
+msgid "Rank calculation"
+msgstr "Изчисление на Ранга"
+
+msgid "Configuration"
+msgstr "Конфигурация"
+
+msgid "Rank"
+msgstr "Ранг"
+
+msgid "Max place"
+msgstr "Максимално място"
+
+msgid "Result time"
+msgstr "Резултати"
+
+msgid "Live"
+msgstr "Онлайн"
+
+msgid "Token"
+msgstr "Токен"
+
+msgid "Enabled"
+msgstr "Включено"
+
+msgid "Ctrl+K - send selected"
+msgstr "Ctrl+K - изпращане на избрани"
+
+msgid "Ctrl+K on groups - send start list"
+msgstr "Ctrl+K на групите - Изпращане на стартов протокол"
+
+msgid "URL not valid"
+msgstr "URL е недействителен"
+
+msgid "Not started numbers"
+msgstr "Не стартиращи участници"
+
+msgid "Dialog"
+msgstr "Диалог"
+
+msgid "Source number"
+msgstr "Изходен номер"
+
+msgid "Ivan Churakoff M21 11:09:00"
+msgstr "Ivan Churakoff M21 11:09:00"
+
+msgid "Target number"
+msgstr "Целеви номер"
+
+msgid "Reserve M60 11:40:00"
+msgstr "Резерва M60 11:40:00"
+
+msgid "Remove source"
+msgstr "Премахни източник"
+
+msgid "Replace source with reserve"
+msgstr "Замени основен с резерва"
+
+msgid "Team properties"
+msgstr "Настройки на отбора"
+
+msgid "Code"
+msgstr "Код"
+
+msgid "Country"
+msgstr "Държава"
+
+msgid "Region"
+msgstr "Регион"
+
+msgid "Contact"
+msgstr "Данни за връзка"
+
+msgid "Entry properties"
+msgstr "Настройки на състезателите"
+
+msgid "Last name"
+msgstr "Фамилия"
+
+msgid "First name"
+msgstr "Име"
+
+msgid "Birthday"
+msgstr "Дата на раждане"
+
+msgid "Year of birth"
+msgstr "Година на раждане"
+
+msgid "Qualification"
+msgstr "Квалификация"
+
+msgid "Bib"
+msgstr "Състезателен Номер"
+
+msgid "Start time"
+msgstr "Стартово време"
+
+msgid "Punch card #"
+msgstr "Номер на чипа №"
+
+msgid "Number already exists"
+msgstr "Номерът вече съществува"
+
+msgid "Number is unique"
+msgstr "Номерът е уникален"
+
+msgid "Card number already exists"
+msgstr "Номерът на чипа вече съществува"
+
+msgid "Card number is unique"
+msgstr "Номерът на чипа е уникален"
+
+msgid "Printer settings"
+msgstr "Настройки на печата"
+
+msgid "Default split printer"
+msgstr "Принтер за контроли"
+
+msgid "select"
+msgstr "избери"
+
+msgid "Template"
+msgstr "Шаблон"
+
+msgid "Internal printing"
+msgstr "Стандартен шаблон"
+
+msgid "scale"
+msgstr "мащаб"
+
+msgid "Choose template"
+msgstr "Избери шаблон"
+
+msgid "Open HTML template"
+msgstr "Отвори HTML шаблон"
+
+msgid "HTML file (*.html)"
+msgstr "HTML файл (*.html)"
+
+msgid "Print splits"
+msgstr "Отпечатай контроли"
+
+msgid "Margins"
+msgstr "Полета"
+
+msgid "Left"
+msgstr "Ляво"
+
+msgid "Top"
+msgstr "Отгоре"
+
+msgid "Right"
+msgstr "Дясно"
+
+msgid "Bottom"
+msgstr "Отдолу"
+
+msgid "Clone relay legs"
+msgstr "Клонирай броят етапи"
+
+msgid "Minimal bib"
+msgstr "Минимален състезателен номер"
+
+msgid "Maximal bib"
+msgstr "Максимален състезателен номер"
+
+msgid "Increment"
+msgstr "Увеличение"
+
+msgid "Relay number"
+msgstr "Relay number"
+
+msgid "First relay number"
+msgstr "First relay number"
+
+msgid "Rent cards"
+msgstr "Предоставяне на чипове"
+
+msgid "Report creating"
+msgstr "Създаване на портокола"
+
+msgid "Open in browser"
+msgstr "Отвори в браузъра"
+
+msgid "Save to last file"
+msgstr "Запиши в последният файл"
+
+msgid "Send selected"
+msgstr "Изпрати избраните"
+
+msgid "Save As WDB file"
+msgstr "Запиши като WDB файл"
+
+msgid "SportOrg file (*.json)"
+msgstr "SportOrg file (*.json)"
+
+msgid "Save As HTML file"
+msgstr "Запиши като HTML файл"
+
+msgid "Result"
+msgstr "Резултат"
+
+msgid "Created at"
+msgstr "Създаден на"
+
+msgid "Days"
+msgstr "Дни"
+
+msgid "Start"
+msgstr "Старт"
+
+msgid "Finish"
+msgstr "Финал"
+
+msgid "Credit"
+msgstr "Credit"
+
+msgid "Penalty"
+msgstr "Наказание"
+
+msgid "Penalty legs"
+msgstr "Penalty legs"
+
+msgid "Status"
+msgstr "Статус"
+
+msgid "Splits"
+msgstr "Контроли"
+
+msgid "Scores assign"
+msgstr "Присвои резултати"
+
+msgid "Value list"
+msgstr "Списък на стойностите"
+
+msgid "Formula"
+msgstr "Формула"
+
+msgid "Limit per team"
+msgstr "Лимит за отбор"
+
+msgid "Search"
+msgstr "Търсене"
+
+msgid "The search has not given any results"
+msgstr "Няма намерени резултати"
+
+msgid "Languages"
+msgstr "Език"
+
+msgid "Auto save"
+msgstr "Автоматичен запис"
+
+msgid "Show toolbar"
+msgstr "Покажи панелът с инструменти"
+
+msgid "Open recent file"
+msgstr "Отвори файлът с резултати"
+
+msgid "Use birthday"
+msgstr "Използвай денят на раждане, а не само година"
+
+msgid "Check updates"
+msgstr "Провери за обновления"
+
+msgid "Successful result"
+msgstr "Успешен резултат"
+
+msgid "Unsuccessful result"
+msgstr "Не усппешен резултат"
+
+msgid "Enable rented card sound"
+msgstr "Включи звукът при предоставена карта"
+
+msgid "Rented card sound"
+msgstr "Звук при предоставена карта"
+
+msgid "New"
+msgstr "Нов"
+
+msgid "Copy"
+msgstr "Копирай"
+
+msgid "Move up"
+msgstr "Премести на-горе"
+
+msgid "Move down"
+msgstr "Премести на-долу"
+
+msgid "Delete"
+msgstr "Изтрий"
+
+msgid "Main settings"
+msgstr "Основни настройки"
+
+msgid "Sounds"
+msgstr "Звуци"
+
+msgid "Multi day"
+msgstr "Многодневно състезание"
+
+msgid "Settings"
+msgstr "Настройки"
+
+msgid "Import"
+msgstr "Импорт"
+
+msgid "Choose race"
+msgstr "Изберете състезание"
+
+msgid "Unique id"
+msgstr "Уникално ID"
+
+msgid "Id"
+msgstr "ID"
+
+msgid "Action"
+msgstr "Деиствие"
+
+msgid "Add"
+msgstr "Добави"
+
+msgid "Overwrite"
+msgstr "Презапиши"
+
+msgid "Handicap start time"
+msgstr "Начално време на Хендикап"
+
+msgid "Handicap mode"
+msgstr "Режим Хендикап"
+
+msgid "Reverse mode"
+msgstr "Режим Резерви"
+
+msgid "Max gap from leader"
+msgstr "Максимално разстояние от лидера"
+
+msgid "Start time for 2 group"
+msgstr "Стартово време за две групи"
+
+msgid "Offset after DSQ"
+msgstr "Интервал след дисквалификация на участник"
+
+msgid "Start Preparation"
+msgstr "Подготовка на старта"
+
+msgid "Reserves insert"
+msgstr "Добавяне на резервни участници"
+
+msgid "Reserve prefix"
+msgstr "Префикс на резервен участник"
+
+msgid "Reserve"
+msgstr "Резерв"
+
+msgid "Reserves per group, ps"
+msgstr "Брой резерви в група, бр"
+
+msgid "Reserves per group, %"
+msgstr "Резерви в група в проценти, %"
+
+msgid "Insert reserves"
+msgstr "Добави резерви"
+
+msgid "Draw"
+msgstr "Жребий"
+
+msgid "Split by start groups"
+msgstr "Раздели по стартови групи"
+
+msgid "Split by teams"
+msgstr "Раздели по отбори"
+
+msgid "Split by regions"
+msgstr "Раздели по региони"
+
+msgid "Mix groups"
+msgstr "Смесен жребий"
+
+msgid "Change start time"
+msgstr "Промяна на стартовото време"
+
+msgid "First start in corridor"
+msgstr "Първи старт в коридора"
+
+msgid "Fixed start interval"
+msgstr "Фиксиран стартов интервал"
+
+msgid "Take start interval from group settings"
+msgstr "Вземи стартовият интервал от настройките на групата"
+
+msgid "Start numbers"
+msgstr "Стартов номер"
+
+msgid "Change start numbers"
+msgstr "Смяна на стартов номер"
+
+msgid "First number"
+msgstr "Първи номер"
+
+msgid "interval"
+msgstr "интервал"
+
+msgid "Number = corridor + minute"
+msgstr "Номер = коридор + минута"
+
+msgid "Number = corridor + order"
+msgstr "Номер = коридор + пореден номер"
+
+msgid "Start time change"
+msgstr "Промяна на стартовото време"
+
+msgid "Reduce"
+msgstr "Намали"
+
+msgid "Teamwork"
+msgstr "Съвместна работа"
+
+msgid "Type connection"
+msgstr "Тип на връзката"
+
+msgid "Client"
+msgstr "Клиент"
+
+msgid "Server"
+msgstr "Сървър"
+
+msgid "Host"
+msgstr "Хост"
+
+msgid "Port"
+msgstr "Порт"
+
+msgid "Client/Server"
+msgstr "Клиент/Сървър"
+
+msgid "Telegram"
+msgstr "Telegram"
+
+msgid "Chat id"
+msgstr "Chat id"
+
+msgid "Parse mode"
+msgstr "Parse mode"
+
+msgid "Text"
+msgstr "Текст"
+
+msgid "Markdown"
+msgstr "Записване"
+
+msgid "HTML"
+msgstr "HTML"
+
+msgid "Penalty time"
+msgstr "Наказание, време"
+
+msgid "Card number"
+msgstr "Номер на чипа"
+
+msgid "Create new result, if doesn't exist"
+msgstr "Създай нов резултат ако не съществува"
+
+msgid "Save to file"
+msgstr "Запиши във файл"
+
+msgid "Load from file"
+msgstr "Зареди от файл"
+
+msgid "Values"
+msgstr "Значение"
+
+msgid "Identifier"
+msgstr "Идентификатор"
+
+msgid "Person name"
+msgstr "Име на състезателя"
+
+msgid "Value"
+msgstr "Значение"
+
+msgid "Separator"
+msgstr "Разделител"
+
+msgid "space"
+msgstr "интервал"
+
+msgid "tab"
+msgstr "табулация"
+
+msgid "semicolon"
+msgstr "точка със запетая"
+
+msgid "custom"
+msgstr "по избор"
+
+msgid "Options"
+msgstr "Опции"
+
+msgid "Timekeeping settings"
+msgstr "Настройка на  отчитането на времената"
+
+msgid "Zero time"
+msgstr "Начало на състезанието"
+
+msgid "Available Ports"
+msgstr "Достъпни портове"
+
+msgid "From protocol"
+msgstr "От портокола"
+
+msgid "Start station"
+msgstr "Стартова станция"
+
+msgid "Control point"
+msgstr "Контролна точка"
+
+msgid "Start gate"
+msgstr "Стартова врата"
+
+msgid "Finish time"
+msgstr "Време на финиширане"
+
+msgid "Finish station"
+msgstr "Финална станция"
+
+msgid "Light beam"
+msgstr "Светлинен лъч"
+
+msgid "Assigning a chip when reading"
+msgstr "Присвояване на чипа при четене"
+
+msgid "Off"
+msgstr "Изключено"
+
+msgid "Only unknown members"
+msgstr "Само неизвестни чипове"
+
+msgid "Always"
+msgstr "Винаги"
+
+msgid "Athlete auto create"
+msgstr "Създаване на нов състезател"
+
+msgid "Several readout of chip"
+msgstr "Повторно четене на чипа"
+
+msgid "Several results"
+msgstr "Нови резултати"
+
+msgid "Ask for a bib when re-reading the card"
+msgstr "Попитай за номер на състезателя при повторно четене на чипа"
+
+msgid "Find next relay leg"
+msgstr "Find next relay leg"
+
+msgid "Merge punches"
+msgstr "Обедини отметките"
+
+msgid "Assignment mode"
+msgstr "Режим на присвояване"
+
+msgid "by time"
+msgstr "по време"
+
+msgid "by scores"
+msgstr "по точки"
+
+msgid "rogain scores"
+msgstr "rogain scores"
+
+msgid "fixed scores"
+msgstr "фиксирани точки"
+
+msgid "minute penalty"
+msgstr "наказание за всяка просрочена минута"
+
+msgid "no penalty"
+msgstr "без наказание"
+
+msgid "penalty time"
+msgstr "наказание време"
+
+msgid "penalty laps"
+msgstr "наказание обиколки"
+
+msgid "counting lap"
+msgstr "counting lap"
+
+msgid "lap station"
+msgstr "lap station"
+
+msgid "Don't disqualify"
+msgstr "Не дисквалифицирай"
+
+msgid "Max penalty = quantity of cp"
+msgstr "Max penalty = quantity of cp"
+
+msgid "scores off"
+msgstr "точки изключени"
+
+msgid "scores array"
+msgstr "Списък на точките"
+
+msgid "scores formula"
+msgstr "формула за точките"
+
+msgid "scores formula hint"
+msgstr "scores formula hint"
+
+msgid "Accuracy"
+msgstr "Точност"
+
+msgid "Format of competitions"
+msgstr "Формат на състезанието"
+
+msgid "< 24"
+msgstr "< 24 часа"
+
+msgid "> 24"
+msgstr "> 24 часа"
+
+msgid "SPORTident (Sportiduino, ...) settings"
+msgstr "Настройки SPORTident (Sportiduino, …)"
+
+msgid "Result processing"
+msgstr "Изчисляване на резултатите"
+
+msgid "Scores"
+msgstr "Точки"
+
+msgid "Penalty calculation"
+msgstr "Изчисляване на наказанията"
+
+msgid "Time settings"
+msgstr "Настройки на времената"
+
+msgid "Save file before exit?"
+msgstr "Запиши файла преди изход?"
+
+msgid "Question"
+msgstr "Въпрос"
+
+msgid "Toolbar"
+msgstr "Панел с инструменти"
+
+msgid "Competitors"
+msgstr "Състезатели"
+
+msgid "Groups"
+msgstr "Групи"
+
+msgid "Teams"
+msgstr "Отбори"
+
+msgid "Logs"
+msgstr "Логове"
+
+msgid "Tab doesn't exist"
+msgstr "Разделът не съществува"
+
+msgid "No file to auto save"
+msgstr "Не съществува файл за автоматичен запис"
+
+msgid "Create SportOrg file"
+msgstr "Създай SportOrg файл"
+
+msgid "Error"
+msgstr "Грешка"
+
+msgid "Cannot create file"
+msgstr "Файлът не може да бъде създаден"
+
+msgid "Cannot read file, format unknown"
+msgstr "Файлът не може да бъде отворен, непознат формат"
+
+msgid "No result selected"
+msgstr "Резултатът не е избран"
+
+msgid "No results to print"
+msgstr "Няма резултат за печат"
+
+msgid "No printer selected"
+msgstr "Не е избран принтер"
+
+msgid "Please confirm"
+msgstr "Потвърди"
+
+msgid "Cannot remove group"
+msgstr "Групата не може да бъде премахната"
+
+msgid "Cannot remove course"
+msgstr "Трасето не може да бъде премахнато"
+
+msgid "Cannot remove organization"
+msgstr "Организацията не може да бъде премахната"
+
+msgid "Open SportOrg file"
+msgstr "Отвори SportOrg файл"
+
+msgid "Open CSV Winorient file"
+msgstr "Отвори CSV Winorient файл"
+
+msgid "CSV Winorient (*.csv)"
+msgstr "CSV Winorient (*.csv)"
+
+msgid "Import error"
+msgstr "Грешка при импорта"
+
+msgid "Open WDB Winorient file"
+msgstr "Отвори WDB Winorient файл"
+
+msgid "WDB Winorient (*.wdb)"
+msgstr "WDB Winorient (*.wdb)"
+
+msgid "Open Ocad txt v8 file"
+msgstr "Отвори Ocad v8 файл"
+
+msgid "Ocad classes v8 (*.txt)"
+msgstr "Ocad classes v8 (*.txt)"
+
+msgid "WDB file (*.wdb)"
+msgstr "WDB file (*.wdb)"
+
+msgid "Export error"
+msgstr "Грешка при експорта"
+
+msgid "Save As IOF xml"
+msgstr "Запиши като IOF xml"
+
+msgid "IOF xml (*.xml)"
+msgstr "IOF xml (*.xml)"
+
+msgid "Open IOF xml"
+msgstr "Запиши като IOF xml"
+
+msgid "Use bib as card number"
+msgstr "Замени номера на чипа с номера на състезателя"
+
+msgid "Use card number as bib"
+msgstr "Замени номера на състезателя с номера на чипа"
+
+msgid "Manual finish"
+msgstr "Ръчен финиш"
+
+msgid "No results to change status"
+msgstr "Няма резултати за изменение на статуса"
+
+msgid "Update available"
+msgstr "Налично е обновление"
+
+msgid "You are using the latest version"
+msgstr "Използвате последната версия"
+
+msgid "Info"
+msgstr "Информация"
+
+msgid "Open SportOrg json"
+msgstr "Отвори SportOrg файл"
+
+msgid "SportOrg (*.json)"
+msgstr "Файл SportOrg (*.json)"
+
+msgid "File"
+msgstr "Файл"
+
+msgid "Save"
+msgstr "Запиши"
+
+msgid "Open"
+msgstr "Отвори"
+
+msgid "Save As"
+msgstr "Запиши като"
+
+msgid "Event Settings"
+msgstr "Настройки на състезанието"
+
+msgid "Import from SportOrg file"
+msgstr "Импортирай от SportOrg файл"
+
+msgid "CSV Winorient"
+msgstr "Файл CSV Winorient"
+
+msgid "WDB Winorient"
+msgstr "Файл WDB Winorient"
+
+msgid "Ocad txt v8"
+msgstr "Ocad txt v8"
+
+msgid "IOF xml"
+msgstr "Запиши като IOF xml"
+
+msgid "Export"
+msgstr "Експорт"
+
+msgid "Edit"
+msgstr "Редакция"
+
+msgid "Add object"
+msgstr "Добави запис"
+
+msgid "Duplicate"
+msgstr "Дублирай"
+
+msgid "Text exchange"
+msgstr "Текстов импорт/експорт"
+
+msgid "Mass edit"
+msgstr "Масово редактиране"
+
+msgid "View"
+msgstr "Изглед"
+
+msgid "Refresh"
+msgstr "Опресни"
+
+msgid "Filter"
+msgstr "Филтър"
+
+msgid "Guess courses"
+msgstr "Избор на дистанция за група"
+
+msgid "Guess corridors"
+msgstr "Избор на коридор за група"
+
+msgid "Relay number assign mode"
+msgstr "Relay number assign mode"
+
+msgid "Race"
+msgstr "Състезание"
+
+msgid "Add SPORTident result"
+msgstr "Добави резултати от SPORTident"
+
+msgid "Create report"
+msgstr "Създай протокол"
+
+msgid "Split printout"
+msgstr "Печат на контролите"
+
+msgid "Rechecking"
+msgstr "Повторна проверка"
+
+msgid "Find group by punches"
+msgstr "Намери група по контролни точки"
+
+msgid "Penalty removing"
+msgstr "Премахване на наказание"
+
+msgid "Change status"
+msgstr "Промяна на статуса"
+
+msgid "Set DNS numbers"
+msgstr "Въведи номерата който не са финиширали"
+
+msgid "Assign result by bib"
+msgstr "Присвой резултат по състезателен номер"
+
+msgid "Assign result by card number"
+msgstr "Присвой резултат по номер на картата"
+
+msgid "Service"
+msgstr "Service"
+
+msgid "on/off SPORTident readout"
+msgstr "включване/изключване на четенето на SPORTident чипове"
+
+msgid "on/off Sportiduino readout"
+msgstr "включване/изключване на четенето на Sportiduino чипове"
+
+msgid "on/off SFR readout"
+msgstr "включване/изключване на четенето на SFR чипове"
+
+msgid "On/Off"
+msgstr "Включено/Изключено"
+
+msgid "Send results"
+msgstr "Изпрати резултатите"
+
+msgid "Help"
+msgstr "Помощ"
+
+msgid "Testing"
+msgstr "Тестване"
+
+msgid "Qualification title"
+msgstr "Наименование на квалификацията"
+
+msgid "Year title"
+msgstr "год"
+
+msgid "Card title"
+msgstr "№ чип"
+
+msgid "Rented card"
+msgstr "Предоставена карта"
+
+msgid "World code title"
+msgstr "Меж. код"
+
+msgid "National code title"
+msgstr "Нац. код"
+
+msgid "Out of competition title"
+msgstr "И/С"
+
+msgid "Result count title"
+msgstr "Финиш"
+
+msgid "Rented stub"
+msgstr "Собствен чип"
+
+msgid "o/c"
+msgstr "o/c"
+
+msgid "Penalty legs title"
+msgstr "Penalty legs title"
+
+msgid "Place"
+msgstr "Място"
+
+msgid "Course name"
+msgstr "Наименование на трасето"
+
+msgid "Start fee title"
+msgstr "Наименование на стартовата такса"
+
+msgid "Length title"
+msgstr "Дължина, м"
+
+msgid "Point count title"
+msgstr "брой точки"
+
+msgid "Climb title"
+msgstr "денивелация"
+
+msgid "Min year title"
+msgstr "мин. година"
+
+msgid "Max year title"
+msgstr "макс. година"
+
+msgid "Start interval title"
+msgstr "Интервал"
+
+msgid "Start corridor title"
+msgstr "Коридор"
+
+msgid "Order in corridor title"
+msgstr "Ред в коридора"
+
+msgid "Length"
+msgstr "Дължина"
+
+msgid "Chip"
+msgstr "Чип"
+
+msgid "SPORTident readout"
+msgstr "Четене на SPORTident"
+
+msgid "MF"
+msgstr "М/Ж"
+
+msgid "M"
+msgstr "М"
+
+msgid "F"
+msgstr "Ж"
+
+msgid "Individual race"
+msgstr "Индивидуално състезание"
+
+msgid "Relay"
+msgstr "Щафета"
+
+msgid "None"
+msgstr "-"
+
+msgid "Finished"
+msgstr "Финиширал"
+
+msgid "DSQ"
+msgstr "ДИСКВАЛИФИЦИРАН"
+
+msgid "Missing punch"
+msgstr "Липсваща отметка (перфорация)"
+
+msgid "DNF"
+msgstr "НЕ ФИНИШИРАЛ"
+
+msgid "Active"
+msgstr "Активен"
+
+msgid "Inactive"
+msgstr "Неактивен"
+
+msgid "Overtime"
+msgstr "ПРЕВИШЕНО КОНТРОЛНО ВРЕМЕ"
+
+msgid "Sporting withdrawal"
+msgstr "Sporting withdrawal"
+
+msgid "Not competing"
+msgstr "Извън състезанито"
+
+msgid "Moved"
+msgstr "Преместен"
+
+msgid "Moved up"
+msgstr "Преместен нагоре"
+
+msgid "DNS"
+msgstr "НЕ Е СТАРТИРАЛ"
+
+msgid "Did not enter"
+msgstr "Не регистриран"
+
+msgid "Cancelled"
+msgstr "Заявката е отменена"
+
+msgid "Restored"
+msgstr "Възстановен"
+
+msgid "points"
+msgstr "точки"
+
+msgid "Duplicate card numbers (card numbers are reset)"
+msgstr "Дублирани номера на карти (номерата на карти са ресетнати)"
+
+msgid "Duplicate names"
+msgstr "Дублиране на имена"
+
+msgid "SportOrg printing"
+msgstr "SportOrg принтиране"
+
+msgid "Team result"
+msgstr "Отборен резултат"
+
+msgid "from"
+msgstr "от"
+
+msgid "total"
+msgstr "общо"
+
+msgid "Who can win you"
+msgstr "Може да ви изпревари"
+
+msgid "Final result will be known"
+msgstr "Резултатите ще бъдат известни в"
+
+msgid "Result is final"
+msgstr "Резултатът е финален"
+
+msgid "Status: OK"
+msgstr "Статус: ОК"
+
+msgid "Status: DSQ"
+msgstr "Статус: Дисквалифициран"
+
+msgid "Draft results"
+msgstr "Предварителни резултати"
+
+msgid "Closing connection"
+msgstr "Прекъсване на връзката"
+
+msgid "Competitor"
+msgstr "Състезател"
+
+msgid "Opening port"
+msgstr "Отваряне на порт"
+
+msgid "Cannot open port"
+msgstr "Портът не може да бъде отворен"
+
+msgid "Closing port"
+msgstr "Затваряне на порт"
+
+msgid "Open target WDB file"
+msgstr "Отвори WDB файл"
+
+msgid "Open source WDB file"
+msgstr "Отвори WDB файл"
+
+msgid "Save WDB file"
+msgstr "Запиши WDB файл"
+
+msgid "Import result"
+msgstr "Импортирай резултати"
+
+msgid "Persons"
+msgstr "Състезатели"
+
+msgid "Sorting by"
+msgstr "Сортиране по"
+
+msgid "City"
+msgstr "Град"
+
+msgid "Address"
+msgstr "Адрес"
+
+msgid "Default printer"
+msgstr "Основен принтер"
+
+msgid "Auto connect to SPORTident station"
+msgstr "Автоматично свързване на станции SPORTident"
+
+msgid "Start times"
+msgstr "Стартови времена"
+
+msgid "Start list"
+msgstr "Стартов списък"
+
+msgid "Team list"
+msgstr "Списък по отбори"
+
+msgid "Persons in team"
+msgstr "Брой състезателя в отбор"
+
+msgid "Grouping"
+msgstr "Групиране"
+
+msgid "organization grouping"
+msgstr "групиране по отбори"
+
+msgid "region grouping"
+msgstr "групиране по региони"
+
+msgid "Sum"
+msgstr "Сума"
+
+msgid "scores"
+msgstr "точки"
+
+msgid "time"
+msgstr "време"
+
+msgid "places"
+msgstr "места"
+
+msgid "Team results"
+msgstr "Отборни резултати"
+
+msgid "Print Bib"
+msgstr "Печат на стартови номера"
+
+msgid "Create team results report"
+msgstr "Създай отборен протокол"
+
+msgid "Send start list"
+msgstr "Изпрати стартовият списък"
+
+msgid "Resend results"
+msgstr "Изпрати резултатите повторно"
+
+msgid "Year"
+msgstr "Година"
+
+msgid "World code"
+msgstr "Международен код"
+
+msgid "National code"
+msgstr "Национален код"
+
+msgid "Out of competition"
+msgstr "Извън състезанието"
+
+msgid "Mass start"
+msgstr "Масов старт"
+
+msgid "Pursuit"
+msgstr "Преследване"
+
+msgid "One man relay"
+msgstr "Щафета с един участник"
+
+msgid "Sprint relay"
+msgstr "Смесена щафета"

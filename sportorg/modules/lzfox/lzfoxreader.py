@@ -8,7 +8,6 @@ import time
 from PySide2.QtCore import QThread, Signal
 from queue import Queue, Empty
 from sportorg.common.singleton import singleton
-from sportorg.language import _
 from sportorg.models import memory
 from sportorg.utils.time import time_to_otime
 from sportorg.libs.lzfox.lzfoxreader import LZFoxReader
@@ -180,7 +179,7 @@ class LZFoxReaderClient:
 
     def stop(self):
         self._stop_event.set()
-        self._logger.info(_('Closing connection'))
+        self._logger.info('Closing connection')
 
     def toggle(self):
         if self.is_alive():

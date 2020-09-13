@@ -19,7 +19,7 @@ def parse(file):
         IOFParseResult('CourseData', course_data(tree, ns)),
     ]
 
-    return [result for result in results if result.data is not None]
+    return [result for result in results if result.data]
 
 
 def course_data(tree, ns):
@@ -32,18 +32,20 @@ def course_data(tree, ns):
             'name': course_el.find('iof:Name', ns).text,
             'length': int(course_el.find('iof:Length', ns).text),
             'climb': int(course_el.find('iof:Climb', ns).text),
-            'controls': []
+            'controls': [],
         }
 
         for course_control_el in course_el.findall('iof:CourseControl', ns):
             leg_length = 0
-            if course_control_el.find('iof:LegLength', ns) is not None:
+            if course_control_el.find('iof:LegLength', ns):
                 leg_length = int(course_control_el.find('iof:LegLength', ns).text)
-            course['controls'].append({
-                'type': course_control_el.attrib['type'],  # Start, Control, Finish
-                'control': course_control_el.find('iof:Control', ns).text,
-                'leg_length': leg_length,
-            })
+            course['controls'].append(
+                {
+                    'type': course_control_el.attrib['type'],  # Start, Control, Finish
+                    'control': course_control_el.find('iof:Control', ns).text,
+                    'leg_length': leg_length,
+                }
+            )
         courses.append(course)
     return courses
 
@@ -58,7 +60,7 @@ def entry_list(tree, ns):
         groups[group_id] = {
             'id': group_id,
             'name': group_el.find('iof:Name', ns).text,
-            'short_name': group_el.find('iof:ShortName', ns).text
+            'short_name': group_el.find('iof:ShortName', ns).text,
         }
     person_entries = []
     for person_entry_el in root.findall('iof:PersonEntry', ns):
@@ -67,53 +69,55 @@ def entry_list(tree, ns):
         person = {
             'family': person_el.find('iof:Name', ns).find('iof:Family', ns).text,
             'given': person_el.find('iof:Name', ns).find('iof:Given', ns).text,
-            'extensions': {}
+            'extensions': {},
         }
-        if birth_date_el is not None:
+        if birth_date_el:
             person['birth_date'] = birth_date_el.text
         extensions_el = person_el.find('iof:Extensions', ns)
         if extensions_el:
             qual_el = extensions_el.find('orgeo:Qual', ns)
-            if qual_el is not None:
+            if qual_el:
                 person['extensions']['qual'] = qual_el.text
             bib_el = extensions_el.find('orgeo:BibNumber', ns)
-            if bib_el is not None:
+            if bib_el:
                 person['extensions']['bib'] = bib_el.text
 
         org_el = person_entry_el.find('iof:Organisation', ns)
         organization = {
             'id': org_el.find('iof:Id', ns).text,
-            'name': org_el.find('iof:Name', ns).text
+            'name': org_el.find('iof:Name', ns).text,
         }
         role = org_el.find('iof:Role', ns)
         if role:
             role_person = role.find('iof:Person', ns)
             organization['role_person'] = '{} {}'.format(
                 role_person.find('iof:Name', ns).find('iof:Family', ns).text,
-                role_person.find('iof:Name', ns).find('iof:Given', ns).text
+                role_person.find('iof:Name', ns).find('iof:Given', ns).text,
             )
 
         group_el = person_entry_el.find('iof:Class', ns)
         group = {
             'id': group_el.find('iof:Id', ns).text,
-            'name': group_el.find('iof:Name', ns).text
+            'name': group_el.find('iof:Name', ns).text,
         }
 
         control_card_el = person_entry_el.find('iof:ControlCard', ns)
         control_card = ''
-        if control_card_el is not None:
+        if control_card_el:
             control_card = control_card_el.text
 
         race_numbers = []
         for race_num_el in person_entry_el.findall('iof:RaceNumber', ns):
             race_numbers.append(race_num_el.text)
 
-        person_entries.append({
-            'person': person,
-            'organization': organization,
-            'group': groups[group['id']] if group['id'] in groups else group,
-            'control_card': control_card,
-            'race_numbers': race_numbers,
-        })
+        person_entries.append(
+            {
+                'person': person,
+                'organization': organization,
+                'group': groups[group['id']] if group['id'] in groups else group,
+                'control_card': control_card,
+                'race_numbers': race_numbers,
+            }
+        )
 
     return person_entries
