@@ -256,10 +256,10 @@
             var bibDetailedBlock = document.createElement('div');
             var detildData = [
                 { title: '', value: person.surname + ' ' + person.name },
-                { title: 'Номер чип: ', value: person.card_number || '' },
-                { title: 'Време на старта: ', value: toHHMMSS(person.start_time) },
-                { title: 'Група: ', value: person.group && person.group.name },
-                { title: 'Отбор: ', value: person.organization && person.organization.name || '' }
+                { title: 'Номер чипа: ', value: person.card_number || '' },
+                { title: 'Время старта: ', value: toHHMMSS(person.start_time) },
+                { title: 'Группа: ', value: person.group && person.group.name },
+                { title: 'Коллектив: ', value: person.organization && person.organization.name || '' }
             ];
             for (var _b = 0, detildData_ = detildData; _b < detildData_.length; _b++) {
                 var obj = detildData_[_b];
@@ -295,12 +295,12 @@
     render(store);
     new SettingsGenerator([
         {
-            title: 'Сортиране по: ',
+            title: 'Сортировать по: ',
             value: [
-                {text: 'Номера', value: 'bib'},
-                {text: 'Имена', value: 'name'},
-                {text: 'Групи', value: 'group'},
-                {text: 'Отбори', value: 'organization'}
+                {text: 'номеру', value: 'bib'},
+                {text: 'имени', value: 'name'},
+                {text: 'группе', value: 'group'},
+                {text: 'коллективу', value: 'organization'}
             ],
             change: function (arr) {
                 store.sort = arr[0];
@@ -308,7 +308,7 @@
             }
         },
         {
-            title: 'Показване на обърнати данни',
+            title: 'Отображать перевернутые данные',
             value: store.bibDetailedRotatableText,
             change: function (checked) {
                 store.bibDetailedRotatableText = checked;

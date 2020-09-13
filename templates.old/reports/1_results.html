@@ -4,18 +4,18 @@
 {% block content %}
 <div class="text-center">
     <h3>{{ race.data.description }} <br>{{ race.data.start_datetime|date }} {{ race.data.location }}</h3>
-    <h2>ПРОТОКОЛ РЕЗУЛТАТИ</h2>
+    <h2>ПРОТОКОЛ РЕЗУЛЬТАТОВ</h2>
 </div>
 <div id="results-tables"></div>
 <div>
     <table class="empty-table">
         <tr>
-            <td><b>Главен съдия:</b></td>
+            <td><b>Главный судья:</b></td>
             <td width="150px"></td>
             <td><b>{{ race.data.chief_referee }}</b></td>
         </tr>
         <tr>
-            <td><b>Главен секретар:</b></td>
+            <td><b>Главный секретарь:</b></td>
             <td width="150px"></td>
             <td><b>{{ race.data.secretary }}</b></td>
         </tr>
@@ -59,7 +59,7 @@
                     place: result.place,
                     status: result.status,
                     scores: result.scores,
-                    place_show: result.person.is_out_of_competition ? 'в/с' : result.place === 0 ? '' : result.place === -1 ? '' : result.place,
+                    place_show: result.person.is_out_of_competition ? 'в/к' : result.place === 0 ? '' : result.place === -1 ? '' : result.place,
                     is_out_of_competition: result.person.is_out_of_competition,
                     speed: result.speed,
                     data: result
@@ -231,7 +231,7 @@
                     place: result.place,
                     status: result.status,
                     scores: result.scores,
-                    place_show: result.person.is_out_of_competition ? 'в/с' : result.place === 0 ? '' : result.place === -1 ? '' : result.place,
+                    place_show: result.person.is_out_of_competition ? 'в/к' : result.place === 0 ? '' : result.place === -1 ? '' : result.place,
                     is_out_of_competition: result.person.is_out_of_competition,
                     speed: result.speed,
 					group: result.person.group.name,
@@ -438,7 +438,7 @@
         var rankingBlock = document.createElement('span');
         var ranking = group.ranking;
         if (ranking && ranking.is_active && ranking.rank_scores > 0) {
-            var text = 'Квалификация (точки): ' + ranking.rank_scores.toFixed(0);
+            var text = 'Квалификационный уровень (баллы): ' + ranking.rank_scores.toFixed(0);
             rankingBlock.appendChild(document.createTextNode(text));
 
             for (var _i = 0; _i < ranking.rank.length; _i++) {
@@ -463,7 +463,7 @@
             }
         }
         else {
-            var text = 'Рангът не се брой';
+            var text = 'Ранг не подсчитывался';
             rankingBlock.appendChild(document.createTextNode(text));
         }
 
@@ -473,21 +473,21 @@
     var Fields = {
         fields: [
             {key: 'index', title: '№', size: 4},
-            {key: 'group', title: 'Група', size: 10, active: false},
-            {key: 'name', title: 'Фамилия, Име', size: 30},
-            {key: 'org', title: 'Отбор', size: 20},
-            {key: 'year', title: 'Години', size: 5},
-            {key: 'qual', title: 'Квалификаця', size: 7},
+            {key: 'group', title: 'Группа', size: 10, active: false},
+            {key: 'name', title: 'Фамилия, имя', size: 30},
+            {key: 'org', title: 'Коллектив', size: 20},
+            {key: 'year', title: 'ГР', size: 5},
+            {key: 'qual', title: 'Разряд', size: 7},
             {key: 'bib', title: 'Номер', size: 6},
-            {key: 'penalty_time', title: 'Наказание', size: 9, active: false},
-            {key: 'penalty_laps', title: 'Наказание', size: 9, active: false},
-            {key: 'result', title: 'Резултат', size: 14},
-            {key: 'result_relay', title: 'Отб. резултат', size: 14},
-            {key: 'diff', title: 'Отстояние', size: 11},
-            {key: 'speed', title: 'Скорост', size: 12, active: false},
-            {key: 'place_show', title: 'Място', size: 6},
-            {key: 'scores', title: 'Точки', size: 5, active: false},
-            {key: 'all_splits', title: 'Сплитове', active: false}
+            {key: 'penalty_time', title: 'Штраф', size: 9, active: false},
+            {key: 'penalty_laps', title: 'Штраф', size: 9, active: false},
+            {key: 'result', title: 'Результат', size: 14},
+            {key: 'result_relay', title: 'Ком. рез-т', size: 14},
+            {key: 'diff', title: 'Отставание', size: 11},
+            {key: 'speed', title: 'Темп', size: 12, active: false},
+            {key: 'place_show', title: 'Место', size: 6},
+            {key: 'scores', title: 'Очки', size: 5, active: false},
+            {key: 'all_splits', title: 'Сплиты', active: false}
         ],
         active: function (key, val) {
             for (var _i = 0, _a = this.fields; _i < _a.length; _i++) {
@@ -572,7 +572,7 @@
             titleBlock.id = groupName;
             var groupTitle = groupName;
             if (course && course.controls && course.controls.length){
-                groupTitle += ', ' + course.controls.length + ' КТ';
+                groupTitle += ', ' + course.controls.length + ' КП';
             }
             if (course && course.length){
                 groupTitle += ', ' + course.length / 1000 + ' км';
@@ -677,7 +677,7 @@
             }
         },
         {
-            title: 'Протокол по дистанции',
+            title: 'Протокол по дистанциям',
             value: !!store.showProtocolByCourse,
             change: function (checked) {
                 store.showProtocolByCourse = checked;
@@ -685,7 +685,7 @@
             }
         },
         {
-            title: 'Табличен вид',
+            title: 'Табличный вид',
             value: !!store.tableView,
             change: function (checked) {
                 store.tableView = checked;
@@ -701,7 +701,7 @@
             }
         },
         {
-            title: 'Наказателно време',
+            title: 'Штрафное время',
             value: Fields.isActive('penalty_time'),
             change: function (checked) {
                 Fields.active('penalty_time', checked);
@@ -709,7 +709,7 @@
             }
         },
         {
-            title: 'Наказателни обиколки',
+            title: 'Кол-во штрафных кругов',
             value: Fields.isActive('penalty_laps'),
             change: function (checked) {
                 Fields.active('penalty_laps', checked);
@@ -717,7 +717,7 @@
             }
         },
         {
-            title: 'Отстояние',
+            title: 'Отставание',
             value: Fields.isActive('diff'),
             change: function (checked) {
                 Fields.active('diff', checked);
@@ -725,7 +725,7 @@
             }
         },
         {
-            title: 'Скорост',
+            title: 'Темп',
             value: Fields.isActive('speed'),
             change: function (checked) {
                 Fields.active('speed', checked);
@@ -733,7 +733,7 @@
             }
         },
         {
-            title: 'Сплитове (направление)',
+            title: 'Сплиты (заданное направление)',
             value: !!store.splitsShow,
             change: function (checked) {
                 store.splitsShow = checked;
@@ -741,7 +741,7 @@
             }
         },
         {
-            title: 'Сплитове (всички точки)',
+            title: 'Сплиты (все отметки)',
             value: Fields.isActive('all_splits'),
             change: function (checked) {
                 Fields.active('all_splits', checked);
@@ -749,7 +749,7 @@
             }
         },
         {
-            title: 'Точки',
+            title: 'Очки',
             value: Fields.isActive('scores'),
             change: function (checked) {
                 Fields.active('scores', checked);
@@ -757,7 +757,7 @@
             }
         },
         {
-            title: 'Изпълнение',
+            title: 'Выполнение',
             value: store.rankingShow,
             change: function (checked) {
                 store.rankingShow = checked;
@@ -765,9 +765,9 @@
             }
         },
         {
-            title: 'Покажи първите: ',
+            title: 'Показать первые: ',
             value: [
-                {text: 'Всички резултати', value: 0},
+                {text: 'Все результаты', value: 0},
                 {text: '1', value: 1},
                 {text: '3', value: 3},
                 {text: '4', value: 4},
@@ -781,7 +781,7 @@
             }
         },
         {
-            title: 'Печат на отделна страница',
+            title: 'Печатать на отдельной странице',
             value: false,
             change: function (checked) {
                 store.newPage = checked;
@@ -789,7 +789,7 @@
             }
         },
         {
-            title: 'Авто скрол',
+            title: 'Автоскролл',
             value: Scrolling.enabled,
             change: function (checked) {
                 Scrolling.enabled = checked;

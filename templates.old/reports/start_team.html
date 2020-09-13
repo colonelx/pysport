@@ -73,15 +73,15 @@
     var Fields = {
         fields: [
             {key: 'index', title: '№', size: 4},
-            {key: 'name', title: 'Фамилия, Име', size: 40},
-            {key: 'group', title: 'Група', size: 20},
-            {key: 'year', title: 'Години', size: 5},
-            {key: 'qual', title: 'Квалификация', size: 7},
+            {key: 'name', title: 'Фамилия, имя', size: 40},
+            {key: 'group', title: 'Группа', size: 20},
+            {key: 'year', title: 'ГР', size: 5},
+            {key: 'qual', title: 'Разряд', size: 7},
             {key: 'bib', title: 'Номер', size: 6},
-            {key: 'card_number', title: 'Номер чип', size: 11},
-            {key: 'start', title: 'Време на старта', size: 13},
-            {key: 'price_show', title: 'Цена', size: 6},
-            {key: 'comment', title: 'Коментар', size: 30, active: false}
+            {key: 'card_number', title: 'Номер чипа', size: 11},
+            {key: 'start', title: 'Время старта', size: 13},
+            {key: 'price_show', title: 'Взнос', size: 6},
+            {key: 'comment', title: 'Прим.', size: 30, active: false}
         ],
         active: function (key, val) {
             for (var _i = 0, _a = this.fields; _i < _a.length; _i++) {
@@ -135,11 +135,11 @@
             });
             var infoBlock = document.createElement('div');
             if (price) {
-                infoBlock.appendChild(document.createTextNode('Стартова такса: ' + price + (paid ? ' - ' + paid + ' = ' + (price - paid) : '')));
+                infoBlock.appendChild(document.createTextNode('Стартовый взнос: ' + price + (paid ? ' - ' + paid + ' = ' + (price - paid) : '')));
                 infoBlock.appendChild(document.createElement('br'));
             }
             if (rentedSportidentCards) {
-                infoBlock.appendChild(document.createTextNode('Наем на чип: ' + rentedSportidentCards));
+                infoBlock.appendChild(document.createTextNode('Арендованных ЧИПов: ' + rentedSportidentCards));
             }
             return infoBlock;
         };
@@ -184,7 +184,7 @@
     render();
     new SettingsGenerator([
         {
-            title: 'Табличен вид',
+            title: 'Табличный вид',
             value: !!store.tableView,
             change: function (checked) {
                 store.tableView = checked;
@@ -200,7 +200,7 @@
             }
         },
         {
-            title: 'Номер чип',
+            title: 'Номер чипа',
             value: Fields.isActive('card_number'),
             change: function (checked) {
                 Fields.active('card_number', checked);
@@ -208,7 +208,7 @@
             }
         },
         {
-            title: 'Стартова такса',
+            title: 'Стартовый взнос',
             value: Fields.isActive('price_show'),
             change: function (checked) {
                 Fields.active('price_show', checked);
@@ -216,7 +216,7 @@
             }
         },
         {
-            title: 'Коментар',
+            title: 'Комментарий',
             value: Fields.isActive('comment'),
             change: function (checked) {
                 Fields.active('comment', checked);
@@ -224,18 +224,18 @@
             }
         },
         {
-            title: 'Обединено по отбори',
+            title: 'Объединить по коллективам',
             value: true,
             change: function (checked) {
                 render(null, !checked)
             }
         },
         {
-            title: 'Сортиране на участниците по: ',
+            title: 'Сортировать участников по: ',
             value: [
-                {text: 'име', value: 'name'},
-                {text: 'номер', value: 'bib'},
-                {text: 'група', value: 'group'}
+                {text: 'имени', value: 'name'},
+                {text: 'номеру', value: 'bib'},
+                {text: 'группе', value: 'group'}
             ],
             change: function (arr) {
                 render(arr[0]);

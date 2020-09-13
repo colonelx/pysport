@@ -4,18 +4,18 @@
 {% block content %}
 <div class="text-center">
     <h3>{{ race.data.description }} <br>{{ race.data.start_datetime|date }} {{ race.data.location }}</h3>
-    <h2>СУММА</h2>
+    <h2>СУМА</h2>
 </div>
 <div id="results-tables"></div>
 <div>
     <table class="empty-table">
         <tr>
-            <td><b>Главный судья:</b></td>
+            <td><b>Главен съдия:</b></td>
             <td width="150px"></td>
             <td><b>{{ race.data.chief_referee }}</b></td>
         </tr>
         <tr>
-            <td><b>Главный секретарь:</b></td>
+            <td><b>Главен секретар:</b></td>
             <td width="150px"></td>
             <td><b>{{ race.data.secretary }}</b></td>
         </tr>
@@ -69,7 +69,7 @@
         count = +count || 0;
         var results = [];
         if (group.__type ? group.__type === 3 : race.data.race_type === 3) {
-            console.log(group.name, 'Сумма только для индивидуальных гонок!');
+            console.log(group.name, 'Сума само за индивидуални състезания!');
             return results;
         }
         for (var _i = 0, _a = personList; _i < _a.length; _i++) {
@@ -153,13 +153,13 @@
     var Fields = {
         fields: [
             {key: 'index', title: '№', size: 4},
-            {key: 'name', title: 'Фамилия, имя', size: 30},
-            {key: 'org', title: 'Коллектив', size: 20},
-            {key: 'year', title: 'ГР', size: 5},
-            {key: 'qual', title: 'Разряд', size: 7},
+            {key: 'name', title: 'Фамилия, Име', size: 30},
+            {key: 'org', title: 'Отбор', size: 20},
+            {key: 'year', title: 'Години', size: 5},
+            {key: 'qual', title: 'Квалификация', size: 7},
             {key: 'bib', title: 'Номер', size: 6},
-            {key: 'result', title: 'Сумма', size: 15},
-            {key: 'place', title: 'Место', size: 6}
+            {key: 'result', title: 'Сума', size: 15},
+            {key: 'place', title: 'място', size: 6}
         ],
         active: function (key, val) {
             for (var _i = 0, _a = this.fields; _i < _a.length; _i++) {
@@ -247,7 +247,7 @@
 
     new SettingsGenerator([
         {
-            title: 'Ссылки на группы',
+            title: 'Препратка на група',
             value: !!store.showLinkForGroups,
             change: function (checked) {
                 store.showLinkForGroups = checked;
@@ -255,7 +255,7 @@
             }
         },
         {
-            title: 'Табличный вид',
+            title: 'Табличен вид',
             value: !!store.tableView,
             change: function (checked) {
                 store.tableView = checked;
@@ -271,9 +271,9 @@
             }
         },
         {
-            title: 'Показать первые: ',
+            title: 'Покажи първите: ',
             value: [
-                {text: 'Все результаты', value: 0},
+                {text: 'Всички резултати', value: 0},
                 {text: '1', value: 1},
                 {text: '3', value: 3},
                 {text: '4', value: 4},
@@ -290,7 +290,7 @@
             }
         },
         {
-            title: 'Печатать на отдельной странице',
+            title: 'Печат на отделна страница',
             value: false,
             change: function (checked) {
                 store.newPage = checked;

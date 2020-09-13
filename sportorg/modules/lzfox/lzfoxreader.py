@@ -172,6 +172,7 @@ class LZFoxReaderClient:
         return False
 
     def start(self):
+        print('here')
         self.port = self.choose_port()
         self._stop_event.clear()
         self._start_reader_thread()

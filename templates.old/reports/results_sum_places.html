@@ -4,18 +4,18 @@
 {% block content %}
 <div class="text-center">
     <h3>{{ race.data.description }} <br>{{ race.data.start_datetime|date }} {{ race.data.location }}</h3>
-    <h2>СУМА</h2>
+    <h2>СУММА</h2>
 </div>
 <div id="results-tables"></div>
 <div>
     <table class="empty-table">
         <tr>
-            <td><b>Главен съдия:</b></td>
+            <td><b>Главный судья:</b></td>
             <td width="150px"></td>
             <td><b>{{ race.data.chief_referee }}</b></td>
         </tr>
         <tr>
-            <td><b>Главен секретар:</b></td>
+            <td><b>Главный секретарь:</b></td>
             <td width="150px"></td>
             <td><b>{{ race.data.secretary }}</b></td>
         </tr>
@@ -23,8 +23,6 @@
 </div>
 {% raw %}
 <script>
-    var SUM_STAGES=6; //Quantity of stages to sum - user defined value - Количество этапов для суммы
-
     var current_race =  Number({% endraw %}{{current_race}}{%raw %});
     var races = {% endraw %}{{races|tojson}}{%raw %};
     var race = races[current_race];
@@ -34,56 +32,59 @@
         racePreparation(r);
         for (var _a = 0, _b = r.results; _a < _b.length; _a++) {
             var res = _b[_a];
-            if (res.person && res.person.group && res.person.surname) {
-                index = res.person.group.name + '_' + res.person.surname + '_' + res.person.name;
-                if (!persons[index]) {
-                    persons[index] = res.person;
-                    persons[index].results = {};
+            if (res.person && res.person.group) {
+                var person_key = res.person.group.name+'_'+res.person.bib;
+                if (!persons[person_key]) {
+                    persons[person_key] = res.person;
+                    persons[person_key].results = {};
                 }
-                persons[index].results[r.id] = res;
-                if (!persons[index].is_out_of_competition) {
-                    persons[index].is_out_of_competition = res.person.is_out_of_competition;
+                persons[person_key].results[r.id] = res;
+                if (!persons[person_key].is_out_of_competition) {
+                    persons[person_key].is_out_of_competition = res.person.is_out_of_competition;
                 }
             }
         }
     }
     var personList = [];
-    for (var p_index in persons) {
-        var sum = 0;
-        var r_count = 0;
-        var dsq = false;
-        var score_list = [];
-        for (var race_id in persons[p_index].results) {
-            if (persons[p_index].results[race_id].status === 1) {
-                score_list.push(persons[p_index].results[race_id].scores);
-            } else {
-                score_list.push(0);
-            }
-            r_count++;
-        }
-        score_list.sort(function (a, b) {
-            return b - a;
-        });
-
-        for (var _i = 0, score_ = score_list; _i < score_.length && _i < SUM_STAGES; _i++) {
-            var s = score_[_i];
-            sum += s
-        }
-
-        persons[p_index].sumMsec = sum;
-        personList.push(persons[p_index]);
+    for (var p_key in persons) {
+        personList.push(persons[p_key]);
     }
 
     function getResultsByGroup(group, count) {
         count = +count || 0;
         var results = [];
         if (group.__type ? group.__type === 3 : race.data.race_type === 3) {
-            console.log(group.name, 'Сума само зза индивидуални състезания!');
+            console.log(group.name, 'Сумма только для индивидуальных гонок!');
             return results;
         }
         for (var _i = 0, _a = personList; _i < _a.length; _i++) {
             var person = _a[_i];
-            if (person.sumMsec && person.group.name === group.name) {
+            if (person.group.name === group.name) {
+                var sumMsec = 0;
+                var sumPlaces = 0;
+                var places = [];
+                var r_count = 0;
+                var dsq = false;
+                for (var race_id in person.results) {
+                    if (person.results[race_id].status === 1) {
+                        places.push([person.results[race_id].place,person.results[race_id].result_msec]);
+                    }
+                }
+                places.sort(function(a, b) { return (a[0] - b[0])?(a[0] - b[0]):(a[1]-b[1]); });
+                if (store.bestRaceCount){
+                    places = places.slice(0,store.bestRaceCount);
+                }
+                if (!person.is_out_of_competition){
+                    places.forEach(function (value) {
+                        sumMsec += value[1];
+                        sumPlaces += value[0];
+                        r_count++;
+                    });
+                }
+                if (r_count !== (store.bestRaceCount || races.length)) {
+                    dsq = true;
+                }
+                person.dsq = dsq;
                 var r = {
                     index: 0,
                     name: (person.surname + ' ' + person.name).slice(0, MAX_PERSON_NAME),
@@ -91,29 +92,30 @@
                     qual: Qualification[person.qual],
                     bib: person.bib,
                     year: person.birth_date ? (new Date(person.birth_date)).getFullYear() : '',
-                    resultMsec: person.sumMsec,
-                    result: person.sumMsec,
+                    resultSumPlaces: sumPlaces?sumPlaces:'',
+                    resultMsec: sumMsec,
+                    result: toHHMMSS(sumMsec),
                     place: '',
                     person: person
                 };
                 for (var _b = 0, races_1 = races; _b < races_1.length; _b++) {
                     var race_ = races_1[_b];
                     if (person.results[race_.id]) {
-                        r[race_.id] = person.results[race_.id].scores + '(' + person.results[race_.id].result + ')';
+                        r[race_.id] = person.results[race_.id].result+(person.results[race_.id].place>0?' ('+person.results[race_.id].place+')':'');
                     }
                 }
                 results.push(r);
             }
         }
         results.sort(function (a, b) {
-            if (!a.resultMsec) {
+            if (!a.resultSumPlaces) {
                 return 1;
             }
-            if (!b.resultMsec) {
+            if (!b.resultSumPlaces) {
                 return -1;
             }
             if (a.person.dsq && b.person.dsq) {
-                return b.resultMsec - a.resultMsec;
+                return a.resultSumPlaces - b.resultSumPlaces; 
             }
             if (a.person.dsq) {
                 return 1;
@@ -121,7 +123,7 @@
             if (b.person.dsq) {
                 return -1;
             }
-            return b.resultMsec - a.resultMsec;
+            return a.resultSumPlaces - b.resultSumPlaces;
         });
         var prevRes = results[0];
         var place = 0;
@@ -130,7 +132,7 @@
             var result = results_1[_i];
             result.index = _i + 1;
             if (!result.person.dsq && !result.person.is_out_of_competition) {
-               if (result.resultMsec === prevRes.resultMsec && _i != 0) {
+               if (result.resultSumPlaces === prevRes.resultSumPlaces && _i != 0) {
                     doubleplace++;
                 } else {
                     place = place + 1 + doubleplace;
@@ -162,13 +164,14 @@
     var Fields = {
         fields: [
             {key: 'index', title: '№', size: 4},
-            {key: 'name', title: 'Фамилия, Име', size: 30},
-            {key: 'org', title: 'Отбор', size: 20},
-            {key: 'year', title: 'Години', size: 5},
-            {key: 'qual', title: 'Квалификация', size: 7},
+            {key: 'name', title: 'Фамилия, имя', size: 30},
+            {key: 'org', title: 'Коллектив', size: 20},
+            {key: 'year', title: 'ГР', size: 5},
+            {key: 'qual', title: 'Разряд', size: 7},
             {key: 'bib', title: 'Номер', size: 6},
-            {key: 'result', title: 'Сума', size: 15},
-            {key: 'place', title: 'Място', size: 6}
+            {key: 'resultSumPlaces', title: 'Сумма мест', size: 10},
+            {key: 'result', title: 'Сумма времен', size: 12, active: false},
+            {key: 'place', title: 'Место', size: 6}
         ],
         active: function (key, val) {
             for (var _i = 0, _a = this.fields; _i < _a.length; _i++) {
@@ -210,7 +213,7 @@
                 this.fields.push({
                     key: race_.id,
                     title: day,
-                    size: 14
+                    size: 16
                 });
                 day++;
             }
@@ -256,7 +259,7 @@
 
     new SettingsGenerator([
         {
-            title: 'Препратка на група',
+            title: 'Ссылки на группы',
             value: !!store.showLinkForGroups,
             change: function (checked) {
                 store.showLinkForGroups = checked;
@@ -264,7 +267,7 @@
             }
         },
         {
-            title: 'Табличен вид',
+            title: 'Табличный вид',
             value: !!store.tableView,
             change: function (checked) {
                 store.tableView = checked;
@@ -280,9 +283,9 @@
             }
         },
         {
-            title: 'Покажи първите: ',
+            title: 'Показать первые: ',
             value: [
-                {text: 'Всички резултати', value: 0},
+                {text: 'Все результаты', value: 0},
                 {text: '1', value: 1},
                 {text: '3', value: 3},
                 {text: '4', value: 4},
@@ -299,7 +302,27 @@
             }
         },
         {
-            title: 'Печат на отделна страница',
+            title: 'Сумма мест лучших дней: ',
+            value: [
+                {text: 'Все дни', value: 0},
+                {text: '1', value: 1},
+                {text: '2', value: 2},
+                {text: '3', value: 3},
+                {text: '4', value: 4},
+                {text: '5', value: 5},
+                {text: '6', value: 6},
+                {text: '7', value: 7},
+                {text: '8', value: 8},
+                {text: '9', value: 9},
+                {text: '10', value: 10}
+            ],
+            change: function (arr) {
+                store.bestRaceCount = Number(arr[0]);
+                render();
+            }
+        },
+        {
+            title: 'Печатать на отдельной странице',
             value: false,
             change: function (checked) {
                 store.newPage = checked;

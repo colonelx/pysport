@@ -10,18 +10,18 @@
 <div class="text-center">
     <h3>{{ race.data.description }} <br>
     {{ race.data.start_datetime|date }} {{ race.data.location }}</h3>
-    <h2>СТАРТОВ ПРОТОКОЛ</h2>
+    <h2>ПРОТОКОЛ СТАРТА</h2>
 </div>
 <div id="start-list-tables"></div>
 <div>
     <table class="empty-table">
         <tr>
-            <td><b>Главен съдия:</b></td>
+            <td><b>Главный судья:</b></td>
             <td width="150px"></td>
             <td><b>{{ race.data.chief_referee }}</b></td>
         </tr>
         <tr>
-            <td><b>Главен секретар:</b></td>
+            <td><b>Главный секретарь:</b></td>
             <td width="150px"></td>
             <td><b>{{ race.data.secretary }}</b></td>
         </tr>
@@ -91,13 +91,13 @@
     var Fields = {
         fields: [
             {key: 'index', title: '№', size: 4},
-            {key: 'name', title: 'Фамилия, име', size: 30},
-            {key: 'org', title: 'Отбор', size: 20},
-            {key: 'year', title: 'Години', size: 5},
-            {key: 'qual', title: 'Квалификация', size: 7},
+            {key: 'name', title: 'Фамилия, имя', size: 30},
+            {key: 'org', title: 'Коллектив', size: 20},
+            {key: 'year', title: 'ГР', size: 5},
+            {key: 'qual', title: 'Разряд', size: 7},
             {key: 'bib', title: 'Номер', size: 6},
-            {key: 'card_number', title: 'Номер чип', size: 11},
-            {key: 'start', title: 'Време на старта', size: 13}
+            {key: 'card_number', title: 'Номер чипа', size: 11},
+            {key: 'start', title: 'Время старта', size: 13}
         ],
         active: function (key, val) {
             for (var _i = 0, _a = this.fields; _i < _a.length; _i++) {
@@ -189,7 +189,7 @@
 
     new SettingsGenerator([
         {
-            title: 'Табличен вид',
+            title: 'Табличный вид',
             value: !!store.tableView,
             change: function (checked) {
                 store.tableView = checked;
@@ -205,7 +205,7 @@
             }
         },
         {
-            title: 'Номер чип',
+            title: 'Номер чипа',
             value: Fields.isActive('card_number'),
             change: function (checked) {
                 Fields.active('card_number', checked);
@@ -213,7 +213,7 @@
             }
         },
         {
-            title: 'Авто скрол',
+            title: 'Автоскролл',
             value: Scrolling.enabled,
             change: function (checked) {
                 Scrolling.enabled = checked;

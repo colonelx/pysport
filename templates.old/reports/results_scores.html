@@ -4,18 +4,18 @@
 {% block content %}
 <div class="text-center">
     <h3>{{ race.data.description }} <br>{{ race.data.start_datetime|date }} {{ race.data.location }}</h3>
-    <h2>ПРОТОКОЛ РЕЗУЛТАТИ</h2>
+    <h2>ПРОТОКОЛ РЕЗУЛЬТАТОВ</h2>
 </div>
 <div id="results-tables"></div>
 <div>
     <table class="empty-table">
         <tr>
-            <td><b>Главен съдия:</b></td>
+            <td><b>Главный судья:</b></td>
             <td width="150px"></td>
             <td><b>{{ race.data.chief_referee }}</b></td>
         </tr>
         <tr>
-            <td><b>Главен секретар:</b></td>
+            <td><b>Главный секретарь:</b></td>
             <td width="150px"></td>
             <td><b>{{ race.data.secretary }}</b></td>
         </tr>
@@ -39,9 +39,9 @@
         },
         fields: [
             {key: 'index', title: '№'},
-            {key: 'name', title: 'Отбор'},
-            {key: 'scores', title: 'Точки'},
-            {key: 'count', title: 'Участници'}
+            {key: 'name', title: 'Коллектив'},
+            {key: 'scores', title: 'Очки'},
+            {key: 'count', title: 'Участников'}
         ],
         init: function () {
             this.showSettings();
@@ -167,10 +167,10 @@
             var _this = this;
             new SettingsGenerator([
                 {
-                    title: 'Обедини по: ',
+                    title: 'Объеденить по: ',
                     value: [
-                        {text: 'отбори', value: 'organizations'},
-                        {text: 'региони', value: 'regions'}
+                        {text: 'коллективам', value: 'organizations'},
+                        {text: 'регионам', value: 'regions'}
                     ],
                     change: function (arr) {
                         _this.store.grouping = arr[0];
@@ -178,10 +178,10 @@
                     }
                 },
                 {
-                    title: 'Сума: ',
+                    title: 'Сумма: ',
                     value: [
-                        {text: 'най добър n сред всички групи', value: 'n_all'},
-                        {text: 'най добър n в група', value: 'n_group'}
+                        {text: 'лучшие n среди всех групп', value: 'n_all'},
+                        {text: 'лучшие n в группе', value: 'n_group'}
                     ],
                     change: function (arr) {
                         _this.store.sum = arr[0];
@@ -191,7 +191,7 @@
                 {
                     title: 'n: ',
                     value: [
-                        {text: 'всички участници', value: 0},
+                        {text: 'все участники', value: 0},
                         {text: '3', value: 3},
                         {text: '4', value: 4},
                         {text: '9', value: 9},
@@ -203,10 +203,10 @@
                     }
                 },
                 {
-                    title: 'Сортиране по: ',
+                    title: 'Сортировать по: ',
                     value: [
-                        {text: 'точки', value: 'scores'},
-                        {text: 'име', value: 'name'}
+                        {text: 'очкам', value: 'scores'},
+                        {text: 'названию', value: 'name'}
                     ],
                     change: function (arr) {
                         _this.store.sort = arr[0];
@@ -214,7 +214,7 @@
                     }
                 },
                 {
-                    title: 'Скрий нулеви точки',
+                    title: 'Скрыть нулевые очки',
                     value: this.store.hideNull,
                     change: function (checked) {
                         _this.store.hideNull = checked;

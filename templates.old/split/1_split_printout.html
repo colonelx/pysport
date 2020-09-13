@@ -143,7 +143,7 @@
         {{ race.data.title }}
         <br> {{ race.data.start_datetime|date }}
         <h2>{{ person.surname }} {{ person.name }} - {{ group.name }}</h2>
-        <br> Отбор: {{organization.name}}
+        <br> Команда: {{organization.name}}
         <br> Номер: {{person.bib}} Card: {{person.card_number}}
         <br> Старт: {{result.start_msec|tohhmmss}}
         <table>
@@ -174,16 +174,16 @@
             {% endif %}
         {% endfor %}
         </table>
-        <br> Финал: {{result.finish_msec|tohhmmss}} {{result.speed}}
-        <br> Резултат: {{result.result}}
+        <br> Финиш: {{result.finish_msec|tohhmmss}} {{result.speed}}
+        <br> Результат: {{result.result}}
         {% if result.place > 0 %}
-            <br> Място: {{result.place}} от {{group.count_finished}} (общо {{group.count_person}})
+            <br> Место: {{result.place}} из {{group.count_finished}} (всего {{group.count_person}})
             {% if "can_win_count" in result %}
                 {% if result.can_win_count > 0 %}
-                    <br>Могат да ви изпреварят: {{result.can_win_count}} състезателя.
-                    <br>В {{result.final_result_time}} ще бъдат определени резултатите.
+                    <br>Вас могут выиграть: {{result.can_win_count}} чел.
+                    <br>В {{result.final_result_time}} определится результат
                 {% else %}
-                    <br>Не можете да бъдете изпреварен!
+                    <br>Вас уже никто не обгонит!
                 {% endif %}
             {% endif %}
         <br>
@@ -193,9 +193,9 @@
             {% for control in course.controls %}
                 {{control.code}}
             {% endfor %}<br>
-			<h1>НЕПРАВИЛНО ЧЕКИРАНЕ</h1>
+			<h1>ПЛОХАЯ ОТМЕТКА</h1>
 		{% else %}
-			<h1>ЧЕКИРАНЕ - OK</h1>
+			<h1>ОТМЕТКА - OK</h1>
         {% endif %}
         <table>
             {% for item in items %}

@@ -117,13 +117,11 @@ class PersonEditDialog(BaseDialog):
                 minimum=0,
                 maximum=99,
             ),
-            NumberField(
+            LineField(
                 title=translate('Punch card #'),
                 object=person,
                 key='card_number',
-                id='card_number',
-                minimum=0,
-                maximum=9999999,
+                id='card_number'
             ),
             LabelField(id='card_info'),
             CheckBoxField(
@@ -198,6 +196,9 @@ class PersonEditDialog(BaseDialog):
             if new_year > cur_year:
                 new_year -= 100
             widget.setValue(new_year)
+
+    def convert_card_number(self, cardnum_int) -> str:
+        return str(cardnum_int)
 
     def is_items_ok(self):
         values = self.is_item_valid.values()

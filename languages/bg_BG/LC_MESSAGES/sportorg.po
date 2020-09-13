@@ -1373,3 +1373,6 @@ msgstr "Щафета с един участник"
 
 msgid "Sprint relay"
 msgstr "Смесена щафета"
+
+msgid "points_short"
+msgstr "т."

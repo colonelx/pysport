@@ -73,3 +73,6 @@ msgstr "Penalty legs"
 
 msgid "Mf"
 msgstr "MF"
+
+msgid "points_short"
+msgstr "p."

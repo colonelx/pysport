@@ -92,6 +92,7 @@ class ReportDialog(QDialog):
             except FileNotFoundError as e:
                 logging.error(str(e))
             except Exception as e:
+
                 logging.error(str(e))
                 logging.exception(e)
             self.close()

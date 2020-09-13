@@ -137,7 +137,7 @@ class CSVWinorientImportAction(Action, metaclass=ActionFactory):
         file_name = get_open_file_name(
             translate('Open CSV Winorient file'), translate('CSV Winorient (*.csv)')
         )
-        if file_name is not '':
+        if file_name != '':
             try:
                 winorient.import_csv(file_name)
             except Exception as e:
@@ -155,7 +155,7 @@ class WDBWinorientImportAction(Action, metaclass=ActionFactory):
         file_name = get_open_file_name(
             translate('Open WDB Winorient file'), translate('WDB Winorient (*.wdb)')
         )
-        if file_name is not '':
+        if file_name != '':
             try:
                 winorient.import_wo_wdb(file_name)
             except WDBImportError as e:
@@ -174,7 +174,7 @@ class OcadTXTv8ImportAction(Action, metaclass=ActionFactory):
         file_name = get_open_file_name(
             translate('Open Ocad txt v8 file'), translate('Ocad classes v8 (*.txt)')
         )
-        if file_name is not '':
+        if file_name != '':
             try:
                 ocad.import_txt_v8(file_name)
             except OcadImportException as e:
@@ -196,7 +196,7 @@ class WDBWinorientExportAction(Action, metaclass=ActionFactory):
                 race().data.get_start_datetime().strftime('%Y%m%d')
             ),
         )
-        if file_name is not '':
+        if file_name != '':
             try:
                 wb = WinOrientBinary()
 
@@ -221,7 +221,7 @@ class IOFResultListExportAction(Action, metaclass=ActionFactory):
             translate('IOF xml (*.xml)'),
             '{}_resultList'.format(race().data.get_start_datetime().strftime('%Y%m%d')),
         )
-        if file_name is not '':
+        if file_name != '':
             try:
                 iof_xml.export_result_list(file_name)
             except Exception as e:
@@ -238,7 +238,7 @@ class IOFEntryListImportAction(Action, metaclass=ActionFactory):
         file_name = get_open_file_name(
             translate('Open IOF xml'), translate('IOF xml (*.xml)')
         )
-        if file_name is not '':
+        if file_name != '':
             try:
                 iof_xml.import_from_iof(file_name)
             except Exception as e:
@@ -421,11 +421,9 @@ class SFRReadoutAction(Action, metaclass=ActionFactory):
         SFRReaderClient().toggle()
 
 
-class LZFoxReadoutAction(Action):
+class LZFoxReadoutAction(Action, metaclass=ActionFactory):
     def execute(self):
         LZFoxReaderClient().toggle()
-        time.sleep(0.5)
-        self.app.interval()
 
 
 class CreateReportAction(Action, metaclass=ActionFactory):
@@ -621,7 +619,7 @@ class ImportSportOrgAction(Action, metaclass=ActionFactory):
         file_name = get_open_file_name(
             translate('Open SportOrg json'), translate('SportOrg (*.json)')
         )
-        if file_name is not '':
+        if file_name != '':
             with open(file_name) as f:
                 attr = get_races_from_file(f)
             SportOrgImportDialog(*attr).exec_()

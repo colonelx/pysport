@@ -594,7 +594,7 @@ class Result:
 
         ret = ''
         if race().get_setting('result_processing_mode', 'time') == 'scores':
-            ret += str(self.scores) + ' ' + translate('points') + ' '
+            ret += str(self.scores) + ' ' + translate('points_short') + ' '
 
         time_accuracy = race().get_setting('time_accuracy', 0)
         ret += self.get_result_otime().to_str(time_accuracy)

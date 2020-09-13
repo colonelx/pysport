@@ -1383,3 +1383,6 @@ msgstr "Несколько участников на 1 минуте"
 
 msgid "Group not found"
 msgstr "Такой группы нет"
+
+msgid "points_short"
+msgstr "т."
