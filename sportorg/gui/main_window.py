@@ -135,11 +135,8 @@ class MainWindow(QMainWindow):
         Configuration().read()
         if Configuration().parser.has_section(ConfigFile.PATH):
             try:
-                recent_files = ast.literal_eval(
-                    Configuration().parser.get(
-                        ConfigFile.PATH, 'recent_files', fallback='[]'
-                    )
-                )
+                recent_files = ast.literal_eval(Configuration().parser.get(
+                    ConfigFile.PATH, 'recent_files', fallback='[]'))
                 if isinstance(recent_files, list):
                     self.recent_files = recent_files
             except Exception as e:
@@ -509,7 +506,7 @@ class MainWindow(QMainWindow):
             translate('SportOrg file (*.json)'),
             time.strftime('%Y%m%d'),
         )
-        if not file_name:
+        if file_name is not '':
             try:
                 if update_data:
                     new_event([Race()])
@@ -535,7 +532,7 @@ class MainWindow(QMainWindow):
         self.create_file(update_data=False)
 
     def save_file(self):
-        if self.file:
+        if self.file is not None:
             try:
                 self.clear_filters(remove_condition=False)
                 File(self.file, logging.root, File.JSON).save()
