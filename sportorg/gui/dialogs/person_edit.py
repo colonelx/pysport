@@ -238,7 +238,8 @@ class PersonEditDialog(BaseDialog):
 
     def on_card_number_changed(self):
         self.is_item_valid['card_number'] = True
-        number = self.fields['card_number'].q_item.value()
+        print(self.fields['card_number'])
+        number = self.fields['card_number'].q_item.text()
         card_info = self.fields['card_info']
         card_info.set_text('')
         if number:
