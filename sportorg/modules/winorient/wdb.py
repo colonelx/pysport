@@ -37,6 +37,7 @@ class WinOrientBinary:
         2: ResultStatus.OVERTIME,
         7: ResultStatus.DID_NOT_FINISH,
         8: ResultStatus.DID_NOT_START,
+        8: ResultStatus.DID_NOT_START,
     }
 
     status_reverse = {
@@ -46,6 +47,7 @@ class WinOrientBinary:
         ResultStatus.DISQUALIFIED: 1,
         ResultStatus.OVERTIME: 2,
         ResultStatus.DID_NOT_FINISH: 7,
+        ResultStatus.DID_NOT_START: 8,
         ResultStatus.DID_NOT_START: 8,
     }
 
@@ -138,6 +140,7 @@ class WinOrientBinary:
             if found_group:
                 group_name = found_group.name
                 new_person.group = find(race().groups, name=group_name)
+
 
             found_team = man.get_team()
             if found_team:

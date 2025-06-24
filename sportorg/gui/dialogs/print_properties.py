@@ -35,6 +35,7 @@ from sportorg.gui.dialogs.file_dialog import get_open_file_name
 from sportorg.gui.global_access import GlobalAccess
 from sportorg.gui.utils.custom_controls import AdvComboBox
 from sportorg.language import translate
+from sportorg.language import translate
 from sportorg.models.memory import race
 from sportorg.modules.configs.configs import Config
 

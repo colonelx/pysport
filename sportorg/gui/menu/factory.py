@@ -1,8 +1,12 @@
 from sportorg.gui.menu.actions import ActionFactory
+from sportorg.gui.menu.actions import ActionFactory
 
 
 class Factory:
     def __init__(self, app):
+        self._actions = {}
+        for key, cls in ActionFactory.actions.items():
+            self._actions[key] = cls(app)
         self._actions = {}
         for key, cls in ActionFactory.actions.items():
             self._actions[key] = cls(app)

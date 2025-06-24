@@ -1,6 +1,7 @@
 import os
 import platform
 import re
+import re
 
 try:
     from PySide6.QtWidgets import QFileDialog
@@ -31,6 +32,9 @@ def get_save_file_name(caption="", filter_text="", file_name=""):
             suffix = match.group(1)
             if not file_name.endswith(suffix):
                 file_name += suffix
+    result = QFileDialog.getSaveFileName(
+        None, caption, os.path.join(get_default_dir(), file_name), filter_text
+    )[0]
     result = QFileDialog.getSaveFileName(
         None, caption, os.path.join(get_default_dir(), file_name), filter_text
     )[0]

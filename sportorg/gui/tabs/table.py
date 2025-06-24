@@ -43,3 +43,4 @@ class TableView(QtWidgets.QTableView):
     def setModel(self, QAbstractItemModel):
         super(TableView, self).setModel(QAbstractItemModel)
         self.resizeColumnsToContents()
+

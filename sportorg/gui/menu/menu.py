@@ -380,6 +380,11 @@ def menu_list():
                     "action": "SportiduinoReadoutAction",
                 },
                 {
+                    'title': translate('on/off LZFOX readout'),
+                   # 'icon': config.icon_dir('lzfox.png'),
+                    'action': 'LZFoxReadoutAction'
+                },
+                {
                     "title": translate("on/off SFR readout"),
                     "icon": config.icon_dir("sfr.png"),
                     "action": "SFRReadoutAction",

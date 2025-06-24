@@ -7,6 +7,9 @@ from sportorg.gui.dialogs.file_dialog import get_open_file_name, get_save_file_n
 from sportorg.language import translate
 from sportorg.libs.winorient.wdb import write_wdb
 from sportorg.modules.winorient.wdb import WinOrientBinary
+from sportorg.language import translate
+from sportorg.libs.winorient.wdb import write_wdb
+from sportorg.modules.winorient.wdb import WinOrientBinary
 
 
 def set_numbers(wdb_target, wdb_source):

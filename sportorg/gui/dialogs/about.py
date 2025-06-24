@@ -8,7 +8,9 @@ except ModuleNotFoundError:
     from PySide2.QtWidgets import QDialog, QFormLayout, QLabel, QTextEdit
 
 from sportorg import config
+from sportorg import config
 from sportorg.gui.global_access import GlobalAccess
+from sportorg.language import translate
 from sportorg.language import translate
 
 
@@ -29,7 +31,7 @@ class AboutDialog(QDialog):
         self.setMaximumWidth(640)
         self.layout = QFormLayout(self)
 
-        title_font = QFont("Times", 24)
+        title_font = QFont('Times', 24)
         title_text = QLabel()
         title_text.setText("{} {}".format(config.NAME, config.VERSION))
         title_text.setFont(title_font)
@@ -77,13 +79,12 @@ class AboutDialog(QDialog):
         self.layout.addRow(licence_title)
 
         licence_text = QTextEdit()
-        licence_text.setStyleSheet("QScrollBar:vertical {background: #bfbfbf}")
+        licence_text.setStyleSheet('QScrollBar:vertical {background: #bfbfbf}')
         licence_text.setMinimumHeight(220)
         licence_text.setMaximumHeight(220)
         licence_text.setReadOnly(True)
         licence_text.setText(
             """
-
 ### GNU GENERAL PUBLIC LICENSE
 
 Version 3, 29 June 2007
@@ -759,7 +760,6 @@ library, you may consider it more useful to permit linking proprietary
 applications with the library. If this is what you want to do, use the
 GNU Lesser General Public License instead of this License. But first,
 please read <https://www.gnu.org/licenses/why-not-lgpl.html>.
-"""
-        )
+""" )
         self.layout.addRow(licence_text)
         self.show()

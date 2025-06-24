@@ -360,13 +360,22 @@ msgstr "Результат"
 msgid "DNS"
 msgstr "НЕ СТАРТ."
 
+msgid "Did not start"
+msgstr "НЕ СТАРТ."
+
 msgid "DNF"
+msgstr "СОШЕЛ"
+
+msgid "Did not finish"
 msgstr "СОШЕЛ"
 
 msgid "Overtime"
 msgstr "ПРЕВЫШЕНО КВ"
 
 msgid "DSQ"
+msgstr "ДИСКВ."
+
+msgid "Disqualified"
 msgstr "ДИСКВ."
 
 msgid "Days"
@@ -410,9 +419,6 @@ msgstr "Поиск не дал результатов"
 
 msgid "Languages"
 msgstr "Язык интерфейса"
-
-msgid "Show toolbar"
-msgstr "Показать панель инструментов"
 
 msgid "Auto save"
 msgstr "Автосохранение"
@@ -1104,7 +1110,7 @@ msgstr "Да"
 msgid "No"
 msgstr "Нет"
 
-msgid "MF"
+msgid "Mf"
 msgstr "МЖ"
 
 msgid "M"
@@ -1409,6 +1415,9 @@ msgstr "Загрузить из файла"
 
 msgid "Find group by punches"
 msgstr "Найти группу по отметкам"
+
+msgid "Are you sure you want to reassign the chip number"
+msgstr "Вы уверены, что хотите переприсвоить номер чипа"
 
 msgid "Are you sure you want to reassign the chip number"
 msgstr "Вы уверены, что хотите переприсвоить номер чипа"

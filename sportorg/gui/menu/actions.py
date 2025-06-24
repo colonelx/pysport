@@ -41,8 +41,11 @@ from sportorg.gui.dialogs.start_preparation import (
     StartPreparationDialog,
     guess_courses_for_groups,
 )
+from sportorg.gui.dialogs.start_preparation import (
+    StartPreparationDialog,
+    guess_courses_for_groups,
+)
 from sportorg.gui.dialogs.start_time_change_dialog import StartTimeChangeDialog
-from sportorg.gui.dialogs.teamwork_properties import TeamworkPropertiesDialog
 from sportorg.gui.dialogs.telegram_dialog import TelegramDialog
 from sportorg.gui.dialogs.text_io import TextExchangeDialog
 from sportorg.gui.dialogs.timekeeping_properties import TimekeepingPropertiesDialog
@@ -77,7 +80,7 @@ from sportorg.modules.sfr.sfrreader import SFRReaderClient
 from sportorg.modules.sportident.sireader import SIReaderClient
 from sportorg.modules.sportiduino.sportiduino import SportiduinoClient
 from sportorg.modules.srpid.srpid import SrpidClient
-from sportorg.modules.teamwork.teamwork import Teamwork
+from sportorg.modules.lzfox.lzfoxreader import LZFoxReaderClient
 from sportorg.modules.telegram.telegram import telegram_client
 from sportorg.modules.updater import checker
 from sportorg.modules.winorient import winorient
@@ -599,15 +602,11 @@ class ManualFinishAction(Action, metaclass=ActionFactory):
 class SPORTidentReadoutAction(Action, metaclass=ActionFactory):
     def execute(self):
         SIReaderClient().toggle()
-        time.sleep(0.5)
-        self.app.interval()
 
 
 class SportiduinoReadoutAction(Action, metaclass=ActionFactory):
     def execute(self):
         SportiduinoClient().toggle()
-        time.sleep(0.5)
-        self.app.interval()
 
 
 class ImpinjReadoutAction(Action, metaclass=ActionFactory):
@@ -627,8 +626,11 @@ class SrpidReadoutAction(Action, metaclass=ActionFactory):
 class SFRReadoutAction(Action, metaclass=ActionFactory):
     def execute(self):
         SFRReaderClient().toggle()
-        time.sleep(0.5)
-        self.app.interval()
+
+
+class LZFoxReadoutAction(Action, metaclass=ActionFactory):
+    def execute(self):
+        LZFoxReaderClient().toggle()
 
 
 class CreateReportAction(Action, metaclass=ActionFactory):

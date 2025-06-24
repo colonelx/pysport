@@ -24,6 +24,7 @@ except ModuleNotFoundError:
 from sportorg import config
 from sportorg.gui.global_access import GlobalAccess
 from sportorg.language import translate
+from sportorg.language import translate
 from sportorg.models.constant import RentCards
 
 

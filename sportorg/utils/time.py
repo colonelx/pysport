@@ -76,7 +76,7 @@ def time_to_int(value):
 
 def time_to_mmss(value):
     time_ = time_to_datetime(value)
-    return str(time_.strftime("%M:%S"))
+    return str(time_.strftime('%M:%S'))
 
 
 def time_to_hhmmss(value):
@@ -125,11 +125,26 @@ def time_remove_day(value):
         second=value.second,
         microsecond=value.microsecond,
     )
+    new_value = datetime.datetime(
+        year=2000,
+        month=1,
+        day=1,
+        hour=value.hour,
+        minute=value.minute,
+        second=value.second,
+        microsecond=value.microsecond,
+    )
     return new_value
 
 
 def _time_to_sec(value, max_val=86400):  # default max value = 24h
     if isinstance(value, datetime.datetime):
+        ret = (
+            value.hour * 3600
+            + value.minute * 60
+            + value.second
+            + value.microsecond / 1000000
+        )
         ret = (
             value.hour * 3600
             + value.minute * 60
@@ -157,11 +172,13 @@ def time_to_sec(value, max_val=86400):  # default max value = 24h
 
 def time_to_minutes(value, max_val=24 * 60):
     return time_to_sec(value, max_val * 60) / 60
+def time_to_minutes(value, max_val=24 * 60):
+    return time_to_sec(value, max_val * 60) / 60
 
 
 def get_speed_min_per_km(time, length_m):
     time_km = time / (length_m / 1000)
-    return time_to_mmss(time_km) + "/km"
+    return time_to_mmss(time_km) + '/km'
 
 
 def qdate_to_date(value):

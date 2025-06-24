@@ -227,6 +227,9 @@ class ResultChecker:
         with existence checking (if athlete has less punches, each missing add penalty):
         origin: 31,41,51; athlete: 31; result:2
         origin: 31,41,51; athlete: no punches; result:3
+        with existence checking (if athlete has less punches, each missing add penalty):
+        origin: 31,41,51; athlete: 31; result:2
+        origin: 31,41,51; athlete: no punches; result:3
 
         wildcard support for free order
         origin: *,*,* athlete: 31; result:2          // wrong:

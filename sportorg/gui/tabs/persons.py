@@ -39,6 +39,9 @@ class Widget(QtWidgets.QWidget):
                 self.person_table.set_start_group(
                     NumberClicker().click(key_numbers.index(key))
                 )
+                self.person_table.set_start_group(
+                    NumberClicker().click(key_numbers.index(key))
+                )
                 GlobalAccess().get_main_window().refresh()
         except Exception as e:
             logging.exception(str(e))

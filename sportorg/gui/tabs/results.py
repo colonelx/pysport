@@ -87,9 +87,18 @@ class Widget(QtWidgets.QWidget):
         self.result_course_length_edit = QtWidgets.QLineEdit(
             self.result_course_group_box
         )
+        self.result_course_details = QtWidgets.QTextBrowser(
+            self.result_course_group_box
+        )
+        self.result_course_length_edit = QtWidgets.QLineEdit(
+            self.result_course_group_box
+        )
         self.result_course_length_label = QtWidgets.QLabel(self.result_course_group_box)
         self.result_course_name_edit = QtWidgets.QLineEdit(self.result_course_group_box)
         self.result_course_name_label = QtWidgets.QLabel(self.result_course_group_box)
+        self.vertical_layout_course = QtWidgets.QVBoxLayout(
+            self.result_course_group_box
+        )
         self.vertical_layout_course = QtWidgets.QVBoxLayout(
             self.result_course_group_box
         )
@@ -108,6 +117,9 @@ class Widget(QtWidgets.QWidget):
         self.result_course_form.setWidget(
             0, QtWidgets.QFormLayout.LabelRole, self.result_course_name_label
         )
+        self.result_course_form.setWidget(
+            0, QtWidgets.QFormLayout.LabelRole, self.result_course_name_label
+        )
         self.result_course_name_edit.setReadOnly(True)
         self.result_course_form.setWidget(
             0, QtWidgets.QFormLayout.FieldRole, self.result_course_name_edit
@@ -115,7 +127,16 @@ class Widget(QtWidgets.QWidget):
         self.result_course_form.setWidget(
             1, QtWidgets.QFormLayout.LabelRole, self.result_course_length_label
         )
+        self.result_course_form.setWidget(
+            0, QtWidgets.QFormLayout.FieldRole, self.result_course_name_edit
+        )
+        self.result_course_form.setWidget(
+            1, QtWidgets.QFormLayout.LabelRole, self.result_course_length_label
+        )
         self.result_course_length_edit.setReadOnly(True)
+        self.result_course_form.setWidget(
+            1, QtWidgets.QFormLayout.FieldRole, self.result_course_length_edit
+        )
         self.result_course_form.setWidget(
             1, QtWidgets.QFormLayout.FieldRole, self.result_course_length_edit
         )
@@ -130,6 +151,9 @@ class Widget(QtWidgets.QWidget):
         self.result_card_form.setWidget(
             0, QtWidgets.QFormLayout.LabelRole, self.result_card_start_label
         )
+        self.result_card_form.setWidget(
+            0, QtWidgets.QFormLayout.LabelRole, self.result_card_start_label
+        )
         self.result_card_start_edit.setReadOnly(True)
         self.result_card_form.setWidget(
             0, QtWidgets.QFormLayout.FieldRole, self.result_card_start_edit
@@ -137,7 +161,16 @@ class Widget(QtWidgets.QWidget):
         self.result_card_form.setWidget(
             1, QtWidgets.QFormLayout.LabelRole, self.result_card_finish_label
         )
+        self.result_card_form.setWidget(
+            0, QtWidgets.QFormLayout.FieldRole, self.result_card_start_edit
+        )
+        self.result_card_form.setWidget(
+            1, QtWidgets.QFormLayout.LabelRole, self.result_card_finish_label
+        )
         self.result_card_finish_edit.setReadOnly(True)
+        self.result_card_form.setWidget(
+            1, QtWidgets.QFormLayout.FieldRole, self.result_card_finish_edit
+        )
         self.result_card_form.setWidget(
             1, QtWidgets.QFormLayout.FieldRole, self.result_card_finish_edit
         )

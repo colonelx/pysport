@@ -373,6 +373,7 @@ class SettingsDialog(QDialog):
         self.button_cancel.clicked.connect(cancel_changes)
         self.layout.addRow(button_box)
 
+
         self.show()
 
     def apply_changes_impl(self):

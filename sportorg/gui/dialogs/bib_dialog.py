@@ -24,6 +24,7 @@ except ModuleNotFoundError:
 from sportorg import config
 from sportorg.gui.global_access import GlobalAccess
 from sportorg.language import translate
+from sportorg.language import translate
 from sportorg.models import memory
 from sportorg.modules.sound import Sound
 
@@ -116,6 +117,7 @@ class BibDialog(QDialog):
         return self.person
 
     def found_person(self):
+        return self.person
         return self.person
 
     def apply_changes_impl(self):

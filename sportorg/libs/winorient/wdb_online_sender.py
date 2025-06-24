@@ -1,11 +1,15 @@
 import logging
 import os
+import logging
+import os
 import threading
 import time
+
 
 from pip._vendor import requests
 
 from sportorg.common.otime import OTime
+from sportorg.libs.winorient.wdb import WDB, WDBFinish, parse_wdb
 from sportorg.libs.winorient.wdb import WDB, WDBFinish, parse_wdb
 from sportorg.utils.time import int_to_otime, time_to_hhmmss
 
@@ -27,6 +31,7 @@ class WdbOnlineSender:
         self.url = ""
         self.file_path = ""
         self.send_splits = True
+        self.check_interval = 1000  # ms
         self.check_interval = 1000  # ms
         self.is_running = False
         self.last_modification_time = None
@@ -75,6 +80,9 @@ class WdbOnlineSender:
                                 old_person = self.current_wdb.find_man_by_number(
                                     old_finish.number
                                 )
+                                old_person = self.current_wdb.find_man_by_number(
+                                    old_finish.number
+                                )
                                 new_person = wdb.find_man_by_number(new_finish.number)
 
                                 if old_person and new_person:
@@ -105,13 +113,18 @@ class WdbOnlineSender:
             )  # WO-compatible time in sec * 100
             if self.send_splits:
                 splits = self.get_splits(self.current_wdb, man)
-                ret += "&" + ONLINE_SPLIT + "=" + splits
+                ret += '&' + ONLINE_SPLIT + '=' + splits
 
             logging.info(ret)
             _ = requests.get(ret)
 
     def get_splits(self, wdb, man):
         """
+        строка со сплитами. WinOrient передает её в закодированном бинарном формате
+        Формат: [SSSSSSTTTTTTCC]*
+        SSSSSS - номер чипа в 16-чной системе
+        TTTTTT - время в 16-чной системе
+        СС - номер КП в 16-чной системе
         строка со сплитами. WinOrient передает её в закодированном бинарном формате
         Формат: [SSSSSSTTTTTTCC]*
         SSSSSS - номер чипа в 16-чной системе

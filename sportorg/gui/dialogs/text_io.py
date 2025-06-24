@@ -132,6 +132,12 @@ class TextExchangeDialog(QDialog):
         self.options_grid_layout.addWidget(
             self.option_creating_new_result_checkbox, 0, 0, 1, 1
         )
+        self.option_creating_new_result_checkbox = QCheckBox(
+            translate("Create new result, if doesn't exist")
+        )
+        self.options_grid_layout.addWidget(
+            self.option_creating_new_result_checkbox, 0, 0, 1, 1
+        )
         self.grid_layout.addWidget(self.options_group_box, 1, 0, 1, 2)
 
         self.text_edit = QtWidgets.QPlainTextEdit(self)

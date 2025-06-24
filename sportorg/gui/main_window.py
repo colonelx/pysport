@@ -25,6 +25,7 @@ except ModuleNotFoundError:
 from sportorg import config
 from sportorg.gui.dialogs.course_edit import CourseEditDialog
 from sportorg.gui.dialogs.file_dialog import get_save_file_name
+from sportorg.gui.dialogs.file_dialog import get_save_file_name
 from sportorg.gui.dialogs.group_edit import GroupEditDialog
 from sportorg.gui.dialogs.organization_edit import OrganizationEditDialog
 from sportorg.gui.dialogs.person_edit import PersonEditDialog
@@ -72,6 +73,7 @@ from sportorg.modules.sportident.sireader import SIReaderClient
 from sportorg.modules.sportiduino.sportiduino import SportiduinoClient
 from sportorg.modules.srpid.srpid import SrpidClient
 from sportorg.modules.teamwork.packet_header import ObjectTypes
+from sportorg.modules.lzfox.lzfoxreader import LZFoxReaderClient
 from sportorg.modules.teamwork.teamwork import Teamwork
 from sportorg.modules.telegram.telegram import telegram_client
 
@@ -291,11 +293,11 @@ class MainWindow(QMainWindow):
             if len(self.recent_files):
                 self.open_file(self.recent_files[0])
 
-        Teamwork().set_call(self.teamwork)
         SIReaderClient().set_call(self.add_sportident_result_from_sireader)
         SportiduinoClient().set_call(self.add_sportiduino_result_from_reader)
         ImpinjClient().set_call(self.add_impinj_result_from_reader)
         SFRReaderClient().set_call(self.add_sfr_result_from_reader)
+        LZFoxReaderClient().set_call(self.add_lzfox_result_from_reader)
         SrpidClient().set_call(self.add_srpid_result_from_reader)
 
         self.service_timer = QTimer(self)
@@ -324,6 +326,11 @@ class MainWindow(QMainWindow):
 
         self.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.setDockNestingEnabled(False)
+        self.setDockOptions(
+            QtWidgets.QMainWindow.AllowTabbedDocks
+            | QtWidgets.QMainWindow.AnimatedDocks
+            | QtWidgets.QMainWindow.ForceTabbedDocks
+        )
         self.setDockOptions(
             QtWidgets.QMainWindow.AllowTabbedDocks
             | QtWidgets.QMainWindow.AnimatedDocks
@@ -692,6 +699,9 @@ class MainWindow(QMainWindow):
             logging.exception(e)
 
     def add_sfr_result_from_reader(self, result):
+        self.add_sportident_result_from_sireader(result)
+
+    def add_lzfox_result_from_reader(self, result):
         self.add_sportident_result_from_sireader(result)
 
     def add_sportiduino_result_from_reader(self, result):

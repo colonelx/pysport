@@ -22,7 +22,7 @@ def parse(file):
         IOFParseResult("Event", event(tree, ns)),
     ]
 
-    return [result for result in results if result.data is not None]
+    return [result for result in results if result.data]
 
 
 def course_data(tree, ns):

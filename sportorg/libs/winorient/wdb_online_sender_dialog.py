@@ -32,6 +32,7 @@ class WdbOnlineSenderDialog(QDialog):
             )[0]
             self.file_path.setText(result)
 
+
         self.file_button.clicked.connect(select_file)
         self.file_path = QLineEdit()
         self.layout.addRow(self.file_button, self.file_path)

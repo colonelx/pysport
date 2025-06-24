@@ -6,6 +6,8 @@ import re
 import time
 from queue import Empty, Queue
 from threading import Event, main_thread
+from queue import Empty, Queue
+from threading import Event, main_thread
 
 import serial
 
@@ -24,6 +26,7 @@ from sportident import (
 )
 
 from sportorg.common.singleton import singleton
+from sportorg.language import translate
 from sportorg.language import translate
 from sportorg.models import memory
 from sportorg.modules.sportident import backup
@@ -60,6 +63,7 @@ class SIReaderThread(QThread):
                 si.disconnect()  # release port
                 si = SIReaderControl(port=self.port, logger=logging.root)
 
+            si.poll_sicard()  # try to poll immediately to catch an exception
             si.poll_sicard()  # try to poll immediately to catch an exception
         except Exception as e:
             self._logger.debug(str(e))
@@ -185,6 +189,12 @@ class ResultThread(QThread):
                 + value.second
                 + value.microsecond / 1000000
             )
+            ret = (
+                value.hour * 3600
+                + value.minute * 60
+                + value.second
+                + value.microsecond / 1000000
+            )
             if max_val:
                 ret = ret % max_val
             return ret
@@ -239,6 +249,10 @@ class SIReaderClient:
                 not self._si_reader_thread.isFinished()
                 and not self._result_thread.isFinished()
             )
+            return (
+                not self._si_reader_thread.isFinished()
+                and not self._result_thread.isFinished()
+            )
 
         return False
 
@@ -274,7 +288,7 @@ class SIReaderClient:
         if len(ports):
             self._logger.info(translate("Available Ports"))
             for i, p in enumerate(ports):
-                self._logger.info("{} - {}".format(i, p))
+                self._logger.info('{} - {}'.format(i, p))
             return ports[0]
         else:
             self._logger.info("No ports available")

@@ -50,6 +50,7 @@ class Sportiduino:
     START_BYTE = b"\xfe"
 
     START_STATION = 240
+    START_STATION = 240
     FINISH_STATION = 245
     CHECK_STATION = 248
     CLEAR_STATION = 249
@@ -402,7 +403,7 @@ class Sportiduino:
         except SportiduinoTimeout:
             pass
         except SportiduinoException as msg:
-            self._log_debug("Warning: %s" % msg)
+            self._log_debug('Warning: %s' % msg)
         return False
 
     def read_card_raw(self):
@@ -431,6 +432,7 @@ class Sportiduino:
         @param page6:       Additional page.
         @param page7:       Additional page.
         """
+        # TODO: check page6 and page7 length
         # TODO: check page6 and page7 length
         if page6 is None:
             page6 = b"\x00\x00\x00\x00"
@@ -650,6 +652,7 @@ class Sportiduino:
         value = 0
         for offset, c in enumerate(iterbytes(s[::-1])):
             value += c << offset * 8
+            value += c << offset * 8
         return value
 
     @staticmethod
@@ -734,6 +737,7 @@ class Sportiduino:
         ret["punches"] = []
         for i in range(10, len(data), 5):
             cp = byte2int(data[i])
+            time = datetime.fromtimestamp(Sportiduino._to_int(data[i + 1 : i + 5]))
             time = datetime.fromtimestamp(Sportiduino._to_int(data[i + 1 : i + 5]))
             if cp == Sportiduino.START_STATION:
                 ret["start"] = time

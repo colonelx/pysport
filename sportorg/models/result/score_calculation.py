@@ -2,6 +2,7 @@ import logging
 
 from sportorg.common.otime import OTime
 from sportorg.models.memory import RaceType, Result
+from sportorg.models.memory import RaceType, Result
 from sportorg.models.result.result_calculation import ResultCalculation
 from sportorg.models.start.relay import get_team_result
 
@@ -59,6 +60,9 @@ class ScoreCalculation:
                         leader_time_value = leader_time.to_msec()
                     else:
                         leader_time_value = 1000
+                    result.scores = self.get_scores_by_formula(
+                        leader_time_value, time_value
+                    )
                     result.scores = self.get_scores_by_formula(
                         leader_time_value, time_value
                     )

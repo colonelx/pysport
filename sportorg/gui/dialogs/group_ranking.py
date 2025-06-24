@@ -72,6 +72,7 @@ class GroupRankingDialog(QDialog):
 
         self.show()
         self.setFixedSize(self.size())
+        self.setFixedSize(self.size())
 
     def apply_changes_impl(self):
         for i in Qualification:

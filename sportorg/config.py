@@ -1,4 +1,5 @@
 import logging.config
+import logging.config
 import os
 import sys
 from pathlib import Path
@@ -17,6 +18,7 @@ def is_executable() -> bool:
 
 def module_path() -> str:
     if is_executable():
+        return os.path.dirname(sys.executable)
         return os.path.dirname(sys.executable)
 
     return os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))

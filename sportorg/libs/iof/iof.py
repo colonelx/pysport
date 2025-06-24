@@ -1,4 +1,5 @@
 import xml.etree.ElementTree as ET
+import xml.etree.ElementTree as ET
 from abc import abstractmethod
 from typing import List
 
@@ -6,18 +7,22 @@ from typing import List
 def indent(elem, level=0):
     """
     import xml.etree.ElementTree as ET
+    import xml.etree.ElementTree as ET
 
     elem = ET.Element('MyElem')
+    elem = ET.Element('MyElem')
 
+    indent(elem)
     indent(elem)
     """
     i = "\n" + level * "\t"
     if len(elem):
         if not elem.text or not elem.text.strip():
-            elem.text = i + "\t"
+            elem.text = i + '\t'
         if not elem.tail or not elem.tail.strip():
             elem.tail = i
         for elem in elem:
+            indent(elem, level + 1)
             indent(elem, level + 1)
         if not elem.tail or not elem.tail.strip():
             elem.tail = i
@@ -35,9 +40,12 @@ class BaseElement:
     def get_elem(tag, value=None, attr=None, childs=None):
         el = ET.Element(tag)
         if attr:
+        if attr:
             el.attrib = attr
         if value:
+        if value:
             el.text = value
+        if childs:
         if childs:
             for child in childs:
                 if isinstance(child, BaseElement):
@@ -49,6 +57,7 @@ class BaseElement:
 
     def write(self, file, **kwargs):
         """
+        write(elem, file, encoding='utf-8', xml_declaration=True)
         write(elem, file, encoding='utf-8', xml_declaration=True)
         """
         el = self.to_elem()
@@ -116,6 +125,7 @@ class Given(StrValue):
 class DateStr(StrValue):
     """yyyy-mm-dd"""
 
+
     def __init__(self):
         super().__init__()
         self._tag_name = "Date"
@@ -123,6 +133,7 @@ class DateStr(StrValue):
 
 class TimeStr(StrValue):
     """10:00:00+01:00"""
+
 
     def __init__(self):
         super().__init__()
@@ -132,6 +143,7 @@ class TimeStr(StrValue):
 class StartTimeStr(StrValue):
     """2011-07-12T05:33:17+01:00"""
 
+
     def __init__(self):
         super().__init__()
         self._tag_name = "StartTime"
@@ -139,6 +151,7 @@ class StartTimeStr(StrValue):
 
 class EntryTime(StrValue):
     """2011-07-12T05:33:17+01:00"""
+
 
     def __init__(self):
         super().__init__()
@@ -157,6 +170,7 @@ class Time(BaseElement):
             childs=[
                 self.date,
                 self.time,
+            ],
             ],
         )
 
@@ -236,6 +250,7 @@ class Organisation(BaseElement):
                 self.name,
                 self.country,
             ],
+            ],
         )
 
 
@@ -291,6 +306,7 @@ class PersonEntry(BaseElement):
 class EntryList(BaseElement):
     """ET.ElementTree(EntryList().to_elem()).write(file, **kwargs)"""
 
+
     def __init__(self):
         self.iof = IOF30()
         self.event = Event()
@@ -328,6 +344,7 @@ class TeamEntry(BaseElement):
         self.entry_time = EntryTime()
 
     def to_elem(self):
+        childs = [self.id, self.name, self.organisation]
         childs = [self.id, self.name, self.organisation]
         for team in self.team_entry_person:
             childs.append(team)
@@ -389,6 +406,7 @@ class ClassStart(BaseElement):
         self.course = Course()
 
     def to_elem(self):
+        childs = [self.class_, self.course]
         childs = [self.class_, self.course]
         for start_name in self.start_name:
             childs.append(self.get_elem("StartName", start_name))
@@ -499,6 +517,7 @@ class Fee(BaseElement):
         self.taxable_amount = Amount()
 
     def to_elem(self):
+        childs = [self.id, self.amount, self.taxable_amount]
         childs = [self.id, self.amount, self.taxable_amount]
         for name in self.name:
             childs.append(name)

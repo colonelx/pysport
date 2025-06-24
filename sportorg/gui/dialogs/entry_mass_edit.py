@@ -137,6 +137,9 @@ class MassEditDialog(QDialog):
         self.layout.addRow(
             self.out_of_competition_checkbox, self.out_of_competition_combobox
         )
+        self.layout.addRow(
+            self.out_of_competition_checkbox, self.out_of_competition_combobox
+        )
 
         self.personal_checkbox = QtWidgets.QCheckBox(self)
         self.personal_combobox = AdvComboBox(self)
@@ -184,6 +187,9 @@ class MassEditDialog(QDialog):
                 change_comment = self.comment_text.toPlainText()
                 change_rented = self.rented_combobox.currentText() == yes
                 change_paid = self.paid_combobox.currentText() == yes
+                change_out_of_competition = (
+                    self.out_of_competition_combobox.currentText() == yes
+                )
                 change_out_of_competition = (
                     self.out_of_competition_combobox.currentText() == yes
                 )

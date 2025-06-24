@@ -42,6 +42,8 @@ if __name__ == "__main__":
 
 
 def locale() -> Callable[[str], str]:
+    # print(config.NAME.lower(), config.LOCALE_DIR, locale_current)
+    generate_mo()
     cat = gettext.Catalog(
         config.NAME.lower(), config.LOCALE_DIR, languages=[locale_current]
     )

@@ -5,7 +5,12 @@ from sportorg.config import template_dir
 from sportorg.language import translate
 from sportorg.models.memory import Organization, race
 from sportorg.models.result.split_calculation import GroupSplits
+from sportorg.config import template_dir
+from sportorg.language import translate
+from sportorg.models.memory import Organization, race
+from sportorg.models.result.split_calculation import GroupSplits
 from sportorg.modules.configs.configs import Config
+from sportorg.modules.printing.printing import print_html
 from sportorg.modules.printing.printing import print_html
 from sportorg.modules.printing.printout_split import SportorgPrinter
 

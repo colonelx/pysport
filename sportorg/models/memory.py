@@ -32,6 +32,7 @@ class SystemType(Enum):
     SPORTIDENT = 2
     SFR = 3
     SPORTIDUINO = 4
+    LZFOX = 99
     RFID_IMPINJ = 5
     SRPID = 6
 
@@ -331,6 +332,14 @@ class Group(Model):
 
     def get_count_all(self):
         return self.count_person
+
+    @property
+    def race_type(self):
+        return self.get_type()
+
+    @race_type.setter
+    def race_type(self, value):
+        self.set_type(value)
 
     @property
     def race_type(self):
@@ -723,6 +732,7 @@ class Result(ABC):
             ret += f"{self.rogaine_score} {translate('points')} "
 
         # time_accuracy = race().get_setting('time_accuracy', 0)
+        # time_accuracy = race().get_setting('time_accuracy', 0)
         start = hhmmss_to_time(self.person.comment)
         if start == OTime():
             raise ValueError
@@ -897,6 +907,7 @@ class Result(ABC):
             or self.is_sportiduino()
             or self.is_rfid_impinj()
             or self.is_srpid()
+            or self.is_lzfox()
         )
 
     def is_sportident(self):
@@ -907,6 +918,9 @@ class Result(ABC):
 
     def is_sportiduino(self):
         return self.system_type == SystemType.SPORTIDUINO
+
+    def is_lzfox(self):
+        return self.system_type == SystemType.LZFOX
 
     def is_rfid_impinj(self):
         return self.system_type == SystemType.RFID_IMPINJ
@@ -919,6 +933,7 @@ class Result(ABC):
 
     def check_who_can_win(self):
         """Generate statistic about unfinished athletes in the group for current person.
+        Calculate, how much people can win and at what time current result will be final (nobody can win).
         Calculate, how much people can win and at what time current result will be final (nobody can win).
         """
         if self.person and self.person.group:
@@ -1308,6 +1323,8 @@ class ResultSportiduino(ResultSportident):
 class ResultRfidImpinj(ResultSportident):
     system_type = SystemType.RFID_IMPINJ
 
+class ResultLZFox(ResultSportident):
+    system_type = SystemType.LZFOX
 
 class ResultSrpid(ResultSportident):
     system_type = SystemType.SRPID
@@ -1602,6 +1619,7 @@ class Race(Model):
         "ResultSportiduino": ResultSportiduino,
         "ResultRfidImpinj": ResultRfidImpinj,
         "ResultSrpid": ResultSrpid,
+        'ResultLZFox': ResultLZFox,
         "Group": Group,
         "Course": Course,
         "Organization": Organization,
@@ -1639,6 +1657,7 @@ class Race(Model):
             "ResultSportident": self.results,
             "ResultSFR": self.results,
             "ResultSportiduino": self.results,
+            'ResultLZFox': self.results,
             "ResultRfidImpinj": self.results,
             "ResultSrpid": self.results,
             "Group": self.groups,
@@ -1799,6 +1818,7 @@ class Race(Model):
             "ResultManual",
             "ResultSportident",
             "ResultSFR",
+            'ResultLZFox',
             "ResultSportiduino",
             "ResultRfidImpinj",
             "ResultSrpid",
@@ -2123,6 +2143,13 @@ class Race(Model):
             len(self.courses),
             len(self.organizations),
         )
+        return (
+            len(self.persons),
+            len(self.results),
+            len(self.groups),
+            len(self.courses),
+            len(self.organizations),
+        )
 
     def get_duplicate_card_numbers(self):
         ret = []
@@ -2292,6 +2319,12 @@ class Ranking:
         self.rank[Qualification.KMS] = RankingItem(
             qual=Qualification.KMS, use_scores=False, max_place=6, is_active=False
         )
+        self.rank[Qualification.MS] = RankingItem(
+            qual=Qualification.MS, use_scores=False, max_place=2, is_active=False
+        )
+        self.rank[Qualification.KMS] = RankingItem(
+            qual=Qualification.KMS, use_scores=False, max_place=6, is_active=False
+        )
         self.rank[Qualification.I] = RankingItem(qual=Qualification.I)
         self.rank[Qualification.II] = RankingItem(qual=Qualification.II)
         self.rank[Qualification.III] = RankingItem(qual=Qualification.III)
@@ -2411,7 +2444,7 @@ class RelayLeg:
         """:return person bib, e.g. 1.1 or 1001 depending on settings"""
         if self.number < 1000:
             return 1000 * self.leg + self.number
-        return "{}.{}".format(self.number, self.leg)
+        return '{}.{}'.format(self.number, self.leg)
 
     def get_variant(self):
         """:return person distribution variant e.g. ABCA"""
@@ -2431,7 +2464,7 @@ class RelayLeg:
         return 0
 
     def get_variant_text(self):
-        return "{}.{}: {}".format(self.number, self.leg, self.variant)
+        return '{}.{}: {}'.format(self.number, self.leg, self.variant)
 
     def is_finished(self):
         res = self.get_result()

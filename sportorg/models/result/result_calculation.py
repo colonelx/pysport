@@ -242,6 +242,11 @@ class ResultCalculation:
                     reverse=True,
                     key=lambda item: item.qual.get_score(),
                 )
+                qual_list = sorted(
+                    ranking.rank.values(),
+                    reverse=True,
+                    key=lambda item: item.qual.get_score(),
+                )
                 for j in qual_list:
                     if j.is_active:
                         if isinstance(place, int) and j.max_place >= place:

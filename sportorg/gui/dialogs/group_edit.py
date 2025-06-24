@@ -9,8 +9,18 @@ from sportorg.gui.dialogs.dialog import (
     NumberField,
     TimeField,
 )
+from sportorg.gui.dialogs.dialog import (
+    AdvComboBoxField,
+    BaseDialog,
+    ButtonField,
+    CheckBoxField,
+    LineField,
+    NumberField,
+    TimeField,
+)
 from sportorg.gui.dialogs.group_ranking import GroupRankingDialog
 from sportorg.gui.global_access import GlobalAccess
+from sportorg.language import translate
 from sportorg.language import translate
 from sportorg.models.constant import get_race_courses
 from sportorg.models.memory import Limit, RaceType, find, race
@@ -184,8 +194,10 @@ class GroupEditDialog(BaseDialog):
         Convert 2 digits of year to 4
         2 -> 2002
         11 -> 2011
+        11 -> 2011
         33 -> 1933
         56 -> 1956
+        98 -> 1998
         98 -> 1998
         0 -> 0 exception!
         """

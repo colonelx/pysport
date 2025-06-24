@@ -98,6 +98,7 @@ class OTime:
             self.if_none(minute, self.minute),
             self.if_none(sec, self.sec),
             self.if_none(msec, self.msec),
+            self.if_none(msec, self.msec),
         )
 
     def copy(self) -> "OTime":
@@ -105,8 +106,10 @@ class OTime:
 
     def to_minute(self):
         return trunc(self.to_msec() / (1000 * 60))
+        return trunc(self.to_msec() / (1000 * 60))
 
     def to_sec(self):
+        return trunc(self.to_msec() / 1000)
         return trunc(self.to_msec() / 1000)
 
     def to_msec(self, sub_sec: int = 3) -> int:
@@ -116,6 +119,7 @@ class OTime:
         return self._msec // mlt * mlt
 
     def to_time(self):
+        return datetime.time(self.hour, self.minute, self.sec, self.msec * 1000)
         return datetime.time(self.hour, self.minute, self.sec, self.msec * 1000)
 
     def to_minute_str(self):
@@ -127,6 +131,7 @@ class OTime:
 
     @staticmethod
     def get_msec(day=0, hour=0, minute=0, sec=0, msec=0):
+        ret = day * 86400000 + hour * 3600000 + minute * 60000 + sec * 1000 + msec
         ret = day * 86400000 + hour * 3600000 + minute * 60000 + sec * 1000 + msec
         if ret < 0:
             # emulation of midnight - add 1 day if time < 0.

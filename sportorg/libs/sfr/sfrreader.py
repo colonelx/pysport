@@ -25,6 +25,7 @@ sfrreader.py - Classes to read out SFR card data from master HID stations.
 import logging
 import platform
 from datetime import datetime
+from datetime import datetime
 from time import sleep
 
 if platform.system() == "Windows":
@@ -49,6 +50,9 @@ class SFRReader:
     CMD_INIT = 0x3F
     CMD_START = 0xFD
     CMD_END = 0xFE
+    CMD_INIT = 0x3F
+    CMD_START = 0xFD
+    CMD_END = 0xFE
 
     CMD_REQUEST_CODE = 0x01
     CMD_BEEP_CODE = 0x03
@@ -66,6 +70,7 @@ class SFRReader:
 
     def __init__(self, debug=False, logfile=None, logger=None):
         """Initializes communication with sfr station via HID interface.
+        We have no information, how to manage 2 connected stations
         We have no information, how to manage 2 connected stations
         """
         self._device = None  # Type HidDevice
@@ -97,6 +102,7 @@ class SFRReader:
         length = len(data)
         for i in range(length):
             csw = int(b1) + int(data[i])
+            b1 = csw & 0xFF
             b1 = csw & 0xFF
             b1 += csw // 0x100
         return b1
@@ -180,6 +186,9 @@ class SFRReader:
             # correct answer, card detected
 
             if self._logger:
+                self._logger.debug(
+                    "sfrreader.data_handler ==>> command  '%s' " % last_command
+                )
                 self._logger.debug(
                     "sfrreader.data_handler ==>> command  '%s' " % last_command
                 )
@@ -281,6 +290,9 @@ class SFRReader:
         hid_filter = HidDeviceFilter(
             vendor_id=self.VENDOR_ID, product_id=self.PRODUCT_ID
         )
+        hid_filter = HidDeviceFilter(
+            vendor_id=self.VENDOR_ID, product_id=self.PRODUCT_ID
+        )
         devices = hid_filter.get_devices()
 
         if devices:
@@ -291,12 +303,12 @@ class SFRReader:
             self.beep(delay=0.3, count=3)
 
             if self._logger:
-                self._logger.debug("SFR station connected")
+                self._logger.debug('SFR station connected')
 
             device.set_raw_data_handler(self._data_handler)
         else:
             if self._logger:
-                self._logger.debug("SFR station not found or unavailable")
+                self._logger.debug('SFR station not found or unavailable')
 
     def __del__(self):
         if self._device:
@@ -405,7 +417,7 @@ class SFRReaderReadout(SFRReader):
     """Class for SFR card readout. Reads out the card"""
 
     def __init__(self, *args, **kwargs):
-        super(type(self), self).__init__(*args, **kwargs)
+        super(type(self), self).__init__(*args, **kwargs) 
         self.last_card = None
 
     def poll_card(self):

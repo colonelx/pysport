@@ -1,7 +1,9 @@
 import logging
 
 from sportorg.language import translate
+from sportorg.language import translate
 from sportorg.libs.winorient import wo
+from sportorg.models import memory
 from sportorg.models import memory
 from sportorg.models.memory import Qualification
 from sportorg.modules.winorient.wdb import WinOrientBinary

@@ -7,6 +7,7 @@ from typing import Dict, List
 
 from sportorg.common.otime import OTime
 from sportorg.models.memory import Person, race
+from sportorg.models.memory import Person, race
 from sportorg.models.result.result_calculation import ResultCalculation
 
 
@@ -56,6 +57,7 @@ class DrawManager:
     Now effect on all groups, but in future we'll possibly implement working
     with filtered persons.
     """
+
 
     def __init__(self, r):
         self.race = r
@@ -539,6 +541,9 @@ class StartNumberManager:
                 cur_num = self.process_corridor_by_order(
                     cur_corridor, cur_num, interval
                 )
+                cur_num = self.process_corridor_by_order(
+                    cur_corridor, cur_num, interval
+                )
         else:
             first_number = 1
             cur_num = first_number
@@ -665,6 +670,15 @@ class StartTimeManager:
 
 
 def get_corridors():
+    current_race = race()
+    ret = []
+    for current_group in current_race.groups:
+        cur_corridor = current_group.start_corridor
+        if not cur_corridor:
+            cur_corridor = 0
+        if cur_corridor not in ret:
+            ret.append(cur_corridor)
+    return sorted(ret)
     current_race = race()
     ret = []
     for current_group in current_race.groups:

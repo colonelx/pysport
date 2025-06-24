@@ -1,6 +1,10 @@
 import platform
 
 from sportorg.language import translate
+from sportorg.models.memory import ResultStatus, race
+from sportorg.models.result.result_calculation import ResultCalculation
+
+from sportorg.language import translate
 from sportorg.models.memory import Group, Result, ResultStatus, race
 from sportorg.models.result.result_calculation import ResultCalculation
 
@@ -17,6 +21,9 @@ class SportorgPrinter:
 
         self.dc = win32ui.CreateDC()
         self.dc.CreatePrinterDC(printer_name)
+        self.dc.SetMapMode(
+            win32con.MM_TWIPS
+        )  # 1440 units per inch, 1/20 of dot with 72dpi
         self.dc.SetMapMode(
             win32con.MM_TWIPS
         )  # 1440 units per inch, 1/20 of dot with 72dpi

@@ -147,7 +147,7 @@ class ResultEditDialog(QDialog):
         scroll_area.setWidget(content_widget)
         scroll_area.setWidgetResizable(True)
         vertical_layout.addWidget(scroll_area)
-
+        
         def cancel_changes():
             self.close()
 
@@ -172,6 +172,7 @@ class ResultEditDialog(QDialog):
             )
             button_person.clicked.connect(self.open_person)
 
+        vertical_layout.addWidget(button_box)
         vertical_layout.addWidget(button_box)
 
         self.show()
@@ -199,7 +200,7 @@ class ResultEditDialog(QDialog):
     def set_values_from_model(self):
         if self.current_object.is_punch():
             if self.current_object.card_number:
-                self.item_card_number.setValue(int(self.current_object.card_number))
+                self.item_card_number.setText(str(self.current_object.card_number))
             self.splits.splits(self.current_object.splits)
             self.splits.show()
         if self.current_object.created_at:
@@ -240,8 +241,8 @@ class ResultEditDialog(QDialog):
             race().results.insert(0, result)
 
         if result.is_punch():
-            if result.card_number != self.item_card_number.value():
-                result.card_number = self.item_card_number.value()
+            if result.card_number != int(self.item_card_number.text()):
+                result.card_number = int(self.item_card_number.value())
 
             new_splits = self.splits.splits()
             if len(result.splits) == len(new_splits):

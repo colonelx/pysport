@@ -4,6 +4,9 @@ import time
 from queue import Empty, Queue
 from threading import Event, main_thread
 
+from queue import Empty, Queue
+from threading import Event, main_thread
+
 import serial
 
 try:
@@ -118,6 +121,12 @@ class ResultThread(QThread):
                 + value.second
                 + value.microsecond / 1000000
             )
+            ret = (
+                value.hour * 3600
+                + value.minute * 60
+                + value.second
+                + value.microsecond / 1000000
+            )
             return ret
 
         return 0
@@ -165,6 +174,11 @@ class SportiduinoClient:
             self._start_result_thread()
 
     def is_alive(self):
+        if self._sportiduino_thread and self._result_thread:
+            return (
+                not self._sportiduino_thread.isFinished()
+                and not self._result_thread.isFinished()
+            )
         if self._sportiduino_thread and self._result_thread:
             return (
                 not self._sportiduino_thread.isFinished()

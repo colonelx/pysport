@@ -63,3 +63,4 @@ class RelayNumberDialog(QDialog):
 
     def apply_changes_impl(self):
         set_next_relay_number(self.number_item.value())
+

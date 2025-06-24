@@ -46,6 +46,9 @@ class StartPreparationDialog(QDialog):
         self.button_box.setStandardButtons(
             QtWidgets.QDialogButtonBox.Cancel | QtWidgets.QDialogButtonBox.Ok
         )
+        self.button_box.setStandardButtons(
+            QtWidgets.QDialogButtonBox.Cancel | QtWidgets.QDialogButtonBox.Ok
+        )
 
         self.reserve_group_box = QtWidgets.QGroupBox(self)
         self.reserve_group_box.setGeometry(QtCore.QRect(8, 0, 350, 150))
@@ -57,8 +60,14 @@ class StartPreparationDialog(QDialog):
         self.reserve_layout.setWidget(
             1, QtWidgets.QFormLayout.LabelRole, self.reserve_prefix_label
         )
+        self.reserve_layout.setWidget(
+            1, QtWidgets.QFormLayout.LabelRole, self.reserve_prefix_label
+        )
         self.reserve_prefix = QtWidgets.QLineEdit(self.widget_reserve)
         self.reserve_prefix.setEnabled(False)
+        self.reserve_layout.setWidget(
+            1, QtWidgets.QFormLayout.FieldRole, self.reserve_prefix
+        )
         self.reserve_layout.setWidget(
             1, QtWidgets.QFormLayout.FieldRole, self.reserve_prefix
         )
@@ -68,6 +77,9 @@ class StartPreparationDialog(QDialog):
         )
         self.reserve_group_count_spin_box = AdvSpinBox(parent=self.widget_reserve)
         self.reserve_group_count_spin_box.setEnabled(False)
+        self.reserve_layout.setWidget(
+            2, QtWidgets.QFormLayout.FieldRole, self.reserve_group_count_spin_box
+        )
         self.reserve_layout.setWidget(
             2, QtWidgets.QFormLayout.FieldRole, self.reserve_group_count_spin_box
         )
@@ -83,7 +95,13 @@ class StartPreparationDialog(QDialog):
         self.reserve_layout.setWidget(
             3, QtWidgets.QFormLayout.FieldRole, self.reserve_group_percent_spin_box
         )
+        self.reserve_layout.setWidget(
+            3, QtWidgets.QFormLayout.FieldRole, self.reserve_group_percent_spin_box
+        )
         self.reserve_check_box = QtWidgets.QCheckBox(self)
+        self.reserve_layout.setWidget(
+            0, QtWidgets.QFormLayout.SpanningRole, self.reserve_check_box
+        )
         self.reserve_layout.setWidget(
             0, QtWidgets.QFormLayout.SpanningRole, self.reserve_check_box
         )
@@ -99,13 +117,22 @@ class StartPreparationDialog(QDialog):
         self.draw_layout.setWidget(
             0, QtWidgets.QFormLayout.LabelRole, self.draw_check_box
         )
+        self.draw_layout.setWidget(
+            0, QtWidgets.QFormLayout.LabelRole, self.draw_check_box
+        )
         self.draw_groups_check_box = QtWidgets.QCheckBox(self.widget_draw)
         self.draw_groups_check_box.setEnabled(False)
         self.draw_layout.setWidget(
             1, QtWidgets.QFormLayout.LabelRole, self.draw_groups_check_box
         )
+        self.draw_layout.setWidget(
+            1, QtWidgets.QFormLayout.LabelRole, self.draw_groups_check_box
+        )
         self.draw_teams_check_box = QtWidgets.QCheckBox(self.widget_draw)
         self.draw_teams_check_box.setEnabled(False)
+        self.draw_layout.setWidget(
+            2, QtWidgets.QFormLayout.LabelRole, self.draw_teams_check_box
+        )
         self.draw_layout.setWidget(
             2, QtWidgets.QFormLayout.LabelRole, self.draw_teams_check_box
         )
@@ -131,6 +158,9 @@ class StartPreparationDialog(QDialog):
         self.start_layout = QtWidgets.QFormLayout(self.widget_start)
         self.start_layout.setContentsMargins(0, 0, 0, 0)
         self.start_check_box = QtWidgets.QCheckBox(self.widget_start)
+        self.start_layout.setWidget(
+            0, QtWidgets.QFormLayout.SpanningRole, self.start_check_box
+        )
         self.start_layout.setWidget(
             0, QtWidgets.QFormLayout.SpanningRole, self.start_check_box
         )
@@ -289,10 +319,14 @@ class StartPreparationDialog(QDialog):
     def start_activate(self):
         status = self.start_check_box.isChecked()
         self.start_first_label.setEnabled(status)
+        self.start_first_label.setEnabled(status)
         self.start_first_time_edit.setEnabled(status)
+        self.start_group_settings_radio_button.setEnabled(status)
         self.start_group_settings_radio_button.setEnabled(status)
         self.start_interval_radio_button.setEnabled(status)
         self.start_interval_time_edit.setEnabled(status)
+        self.start_one_minute_qty_label.setEnabled(status)
+        self.start_one_minute_qty.setEnabled(status)
         self.start_one_minute_qty_label.setEnabled(status)
         self.start_one_minute_qty.setEnabled(status)
 
@@ -315,6 +349,9 @@ class StartPreparationDialog(QDialog):
                 ReserveManager(obj).process(
                     reserve_prefix, reserve_count, reserve_percent
                 )
+                ReserveManager(obj).process(
+                    reserve_prefix, reserve_count, reserve_percent
+                )
 
             self.progress_bar.setValue(25)
             sleep(progressbar_delay)
@@ -325,6 +362,9 @@ class StartPreparationDialog(QDialog):
                 split_teams = self.draw_teams_check_box.isChecked()
                 split_regions = self.draw_regions_check_box.isChecked()
                 mix_groups = self.draw_mix_groups_check_box.isChecked()
+                DrawManager(obj).process(
+                    split_start_groups, split_teams, split_regions, mix_groups
+                )
                 DrawManager(obj).process(
                     split_start_groups, split_teams, split_regions, mix_groups
                 )
@@ -345,7 +385,18 @@ class StartPreparationDialog(QDialog):
                         one_minute_qty,
                         mix_groups=mix_groups,
                     )
+                    StartTimeManager(obj).process(
+                        corridor_first_start,
+                        False,
+                        fixed_start_interval,
+                        one_minute_qty,
+                        mix_groups=mix_groups,
+                    )
 
+                if self.start_group_settings_radio_button.isChecked():
+                    StartTimeManager(obj).process(
+                        corridor_first_start, True, fixed_start_interval, one_minute_qty
+                    )
                 if self.start_group_settings_radio_button.isChecked():
                     StartTimeManager(obj).process(
                         corridor_first_start, True, fixed_start_interval, one_minute_qty

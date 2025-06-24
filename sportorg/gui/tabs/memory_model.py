@@ -21,6 +21,7 @@ class AbstractSportOrgMemoryModel(QAbstractTableModel):
     Used to specify common table behavior
     """
 
+
     def __init__(self):
         super().__init__()
         self.race = race()
@@ -80,6 +81,7 @@ class AbstractSportOrgMemoryModel(QAbstractTableModel):
                 columns = self.get_headers()
                 return columns[index]
             if orientation == Qt.Vertical:
+                return str(index + 1)
                 return str(index + 1)
 
     def data(self, index, role=None):
@@ -214,9 +216,12 @@ class AbstractSportOrgMemoryModel(QAbstractTableModel):
     def sort(self, p_int, order=None):
         """Sort table by given column number."""
 
+        """Sort table by given column number."""
+
         def sort_key(x):
             item = self.get_item(x, p_int)
             return item is None, str(type(item)), item
+
 
         try:
             self.layoutAboutToBeChanged.emit()

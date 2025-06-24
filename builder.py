@@ -60,7 +60,7 @@ options = {"build_exe": build_exe_options, "bdist_msi": bdist_msi_options}
 
 executables = [
     Executable(
-        "SportOrg.pyw",
+        "SportOrg.py",
         base=base,
         icon=config.icon_dir("sportorg.ico"),
         copyright="GNU GENERAL PUBLIC LICENSE {}".format(config.NAME),

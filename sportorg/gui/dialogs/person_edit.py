@@ -209,8 +209,10 @@ class PersonEditDialog(BaseDialog):
         Convert 2 digits of year to 4
         2 -> 2002
         11 -> 2011
+        11 -> 2011
         33 -> 1933
         56 -> 1956
+        98 -> 1998
         98 -> 1998
         0 -> 0 exception!
         """

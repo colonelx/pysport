@@ -26,6 +26,8 @@ from sportorg.gui.global_access import GlobalAccess
 from sportorg.gui.utils.custom_controls import AdvComboBox
 from sportorg.language import translate
 from sportorg.models.memory import find, race
+from sportorg.language import translate
+from sportorg.models.memory import find, race
 
 
 class SportOrgImportDialog(QDialog):
@@ -150,6 +152,9 @@ class SportOrgImportDialog(QDialog):
                     if person.group:
                         person.group = find(obj.groups, id=person.group.id)
                     if person.organization:
+                        person.organization = find(
+                            obj.organizations, id=person.organization.id
+                        )
                         person.organization = find(
                             obj.organizations, id=person.organization.id
                         )

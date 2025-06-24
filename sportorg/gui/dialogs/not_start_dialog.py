@@ -25,6 +25,7 @@ from sportorg import config
 from sportorg.gui.global_access import GlobalAccess
 from sportorg.gui.utils.custom_controls import AdvComboBox
 from sportorg.language import translate
+from sportorg.language import translate
 from sportorg.models.constant import StatusComments
 from sportorg.models.memory import ResultManual, ResultStatus, race
 from sportorg.models.result.result_tools import recalculate_results

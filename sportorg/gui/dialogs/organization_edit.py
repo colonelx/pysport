@@ -1,5 +1,7 @@
 from sportorg.gui.dialogs.dialog import AdvComboBoxField, BaseDialog, LineField
+from sportorg.gui.dialogs.dialog import AdvComboBoxField, BaseDialog, LineField
 from sportorg.gui.global_access import GlobalAccess
+from sportorg.language import translate
 from sportorg.language import translate
 from sportorg.models.constant import get_countries, get_regions
 from sportorg.models.memory import find, race

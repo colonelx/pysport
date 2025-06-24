@@ -2,6 +2,7 @@ from dataclasses import dataclass, field
 from typing import IO
 from xml.etree import ElementTree
 
+
 from chardet.universaldetector import UniversalDetector
 
 
@@ -85,12 +86,14 @@ class ClassesV8:
     def parse(self, file):
         if not isinstance(file, str) and not isinstance(file, IO):
             raise TypeError('file is not str or IO')
+            raise TypeError('file is not str or IO')
         if isinstance(file, str):
             try:
                 enc = self.detect_encoding(file)
                 with open(file, encoding=enc) as f:
                     content = f.readlines()
             except FileNotFoundError:
+                raise FileNotFoundError('Not found ' + file)
                 raise FileNotFoundError('Not found ' + file)
         else:
             content = file.readlines()
@@ -127,6 +130,7 @@ class ClassesV8:
     def get_courses(item):
         if not isinstance(item, str) and not isinstance(item, list):
             raise TypeError('item is not string or list')
+            raise TypeError('item is not string or list')
         if isinstance(item, str):
             item = str(item).split(';')
         courses = CourseControlDict()
@@ -140,7 +144,17 @@ class ClassesV8:
                 raise OcadImportException(
                     'Incorrect length:' + len_str + ' in row ' + str(item)
                 )
+                raise OcadImportException(
+                    'Incorrect length:' + len_str + ' in row ' + str(item)
+                )
 
+            courses[i] = CourseControl(
+                **{
+                    'order': i,
+                    'code': courses_split[2 * i + 1],
+                    'length': float(len_str) if len(item[4]) else 0.0,
+                }
+            )
             courses[i] = CourseControl(
                 **{
                     'order': i,
@@ -182,6 +196,12 @@ class ClassesV8:
             )
 
         course = {
+            'group': item[0],
+            'course': item[1],
+            'bib': item[2],
+            'length': float(len_str) if len(item[3]) else 0.0,
+            'climb': float(climb_str) if len(item[4]) else 0.0,
+            'controls': ClassesV8.get_courses(item),
             'group': item[0],
             'course': item[1],
             'bib': item[2],

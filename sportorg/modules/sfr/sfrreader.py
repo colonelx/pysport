@@ -3,6 +3,8 @@ import logging
 import time
 from queue import Empty, Queue
 from threading import Event, main_thread
+from queue import Empty, Queue
+from threading import Event, main_thread
 
 try:
     from PySide6.QtCore import QThread, Signal
@@ -11,7 +13,9 @@ except ModuleNotFoundError:
 
 from sportorg.common.singleton import singleton
 from sportorg.language import translate
+from sportorg.language import translate
 from sportorg.libs.sfr import sfrreader
+from sportorg.libs.sfr.sfrreader import SFRReaderCardChanged, SFRReaderException
 from sportorg.libs.sfr.sfrreader import SFRReaderCardChanged, SFRReaderException
 from sportorg.models import memory
 from sportorg.modules.sportident import backup
@@ -118,6 +122,12 @@ class ResultThread(QThread):
     @staticmethod
     def time_to_sec(value, max_val=86400):
         if isinstance(value, datetime.datetime):
+            ret = (
+                value.hour * 3600
+                + value.minute * 60
+                + value.second
+                + value.microsecond / 1000000
+            )
             ret = (
                 value.hour * 3600
                 + value.minute * 60
