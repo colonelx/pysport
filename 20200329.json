@@ -47,10 +47,10 @@
       "organizations": [
         {
           "object": "Organization",
-          "id": "56a96fec-bb9b-4897-8552-f5f90e256dfc",
-          "name": "LZ1KAM",
+          "id": "9f485339-fac8-4a04-ad08-c8ae2d79a2b3",
+          "name": "LZ1KSP",
           "country": "Bulgaria",
-          "region": "Hskovo",
+          "region": "Plovdiv",
           "contact": "",
           "code": "",
           "count_person": 0,
@@ -69,10 +69,10 @@
         },
         {
           "object": "Organization",
-          "id": "9f485339-fac8-4a04-ad08-c8ae2d79a2b3",
-          "name": "LZ1KSP",
+          "id": "56a96fec-bb9b-4897-8552-f5f90e256dfc",
+          "name": "LZ1KAM",
           "country": "Bulgaria",
-          "region": "Plovdiv",
+          "region": "Hskovo",
           "contact": "",
           "code": "",
           "count_person": 0,
@@ -82,7 +82,7 @@
       "courses": [
         {
           "object": "Course",
-          "id": "e3af8b4e-e365-4612-a48e-1d2268c067b8",
+          "id": "0266deb6-9a0d-4652-8d88-896751aad007",
           "controls": [
             {
               "object": "CourseControl",
@@ -91,17 +91,7 @@
             },
             {
               "object": "CourseControl",
-              "code": "1",
-              "length": 0
-            },
-            {
-              "object": "CourseControl",
               "code": "2",
-              "length": 0
-            },
-            {
-              "object": "CourseControl",
-              "code": "3",
               "length": 0
             },
             {
@@ -121,89 +111,7 @@
             }
           ],
           "bib": 0,
-          "name": "Мъже 50",
-          "length": 0,
-          "climb": 0,
-          "corridor": 0
-        },
-        {
-          "object": "Course",
-          "id": "c528d97e-f584-4677-a7b6-5c7b32dd1f17",
-          "controls": [
-            {
-              "object": "CourseControl",
-              "code": "251",
-              "length": 0
-            },
-            {
-              "object": "CourseControl",
-              "code": "1",
-              "length": 0
-            },
-            {
-              "object": "CourseControl",
-              "code": "2",
-              "length": 0
-            },
-            {
-              "object": "CourseControl",
-              "code": "3",
-              "length": 0
-            },
-            {
-              "object": "CourseControl",
-              "code": "5",
-              "length": 0
-            },
-            {
-              "object": "CourseControl",
-              "code": "252",
-              "length": 0
-            }
-          ],
-          "bib": 0,
-          "name": "Мъже 60",
-          "length": 0,
-          "climb": 0,
-          "corridor": 0
-        },
-        {
-          "object": "Course",
-          "id": "1466316e-d247-499c-b279-2d5949fb61db",
-          "controls": [
-            {
-              "object": "CourseControl",
-              "code": "251",
-              "length": 0
-            },
-            {
-              "object": "CourseControl",
-              "code": "2",
-              "length": 0
-            },
-            {
-              "object": "CourseControl",
-              "code": "3",
-              "length": 0
-            },
-            {
-              "object": "CourseControl",
-              "code": "4",
-              "length": 0
-            },
-            {
-              "object": "CourseControl",
-              "code": "5",
-              "length": 0
-            },
-            {
-              "object": "CourseControl",
-              "code": "252",
-              "length": 0
-            }
-          ],
-          "bib": 0,
-          "name": "Мъже 21",
+          "name": "Жени 16",
           "length": 0,
           "climb": 0,
           "corridor": 0
@@ -251,7 +159,7 @@
         },
         {
           "object": "Course",
-          "id": "0266deb6-9a0d-4652-8d88-896751aad007",
+          "id": "1466316e-d247-499c-b279-2d5949fb61db",
           "controls": [
             {
               "object": "CourseControl",
@@ -261,6 +169,11 @@
             {
               "object": "CourseControl",
               "code": "2",
+              "length": 0
+            },
+            {
+              "object": "CourseControl",
+              "code": "3",
               "length": 0
             },
             {
@@ -280,7 +193,94 @@
             }
           ],
           "bib": 0,
-          "name": "Жени 16",
+          "name": "Мъже 21",
+          "length": 0,
+          "climb": 0,
+          "corridor": 0
+        },
+        {
+          "object": "Course",
+          "id": "c528d97e-f584-4677-a7b6-5c7b32dd1f17",
+          "controls": [
+            {
+              "object": "CourseControl",
+              "code": "251",
+              "length": 0
+            },
+            {
+              "object": "CourseControl",
+              "code": "1",
+              "length": 0
+            },
+            {
+              "object": "CourseControl",
+              "code": "2",
+              "length": 0
+            },
+            {
+              "object": "CourseControl",
+              "code": "3",
+              "length": 0
+            },
+            {
+              "object": "CourseControl",
+              "code": "5",
+              "length": 0
+            },
+            {
+              "object": "CourseControl",
+              "code": "252",
+              "length": 0
+            }
+          ],
+          "bib": 0,
+          "name": "Мъже 60",
+          "length": 0,
+          "climb": 0,
+          "corridor": 0
+        },
+        {
+          "object": "Course",
+          "id": "e3af8b4e-e365-4612-a48e-1d2268c067b8",
+          "controls": [
+            {
+              "object": "CourseControl",
+              "code": "251",
+              "length": 0
+            },
+            {
+              "object": "CourseControl",
+              "code": "1",
+              "length": 0
+            },
+            {
+              "object": "CourseControl",
+              "code": "2",
+              "length": 0
+            },
+            {
+              "object": "CourseControl",
+              "code": "3",
+              "length": 0
+            },
+            {
+              "object": "CourseControl",
+              "code": "4",
+              "length": 0
+            },
+            {
+              "object": "CourseControl",
+              "code": "5",
+              "length": 0
+            },
+            {
+              "object": "CourseControl",
+              "code": "252",
+              "length": 0
+            }
+          ],
+          "bib": 0,
+          "name": "Мъже 50",
           "length": 0,
           "climb": 0,
           "corridor": 0
@@ -289,215 +289,11 @@
       "groups": [
         {
           "object": "Group",
-          "id": "63c15af2-67f6-44bc-a667-2413fd1f9779",
-          "name": "M60",
-          "course_id": "c528d97e-f584-4677-a7b6-5c7b32dd1f17",
+          "id": "2d9a90d2-d7fc-4804-abe8-a743d9ba6ca0",
+          "name": "W21",
+          "course_id": "9a6d3389-8ff1-4a87-8124-ee6fc00f9e58",
           "is_any_course": false,
-          "long_name": "Мъже 60",
-          "price": 0,
-          "min_year": 1940,
-          "max_year": 1960,
-          "min_age": 0,
-          "max_age": 0,
-          "max_time": 7200000,
-          "start_interval": 300000,
-          "start_corridor": 1,
-          "order_in_corridor": 0,
-          "first_number": 0,
-          "count_person": 1,
-          "count_finished": 0,
-          "ranking": {
-            "is_active": false,
-            "rank_scores": 0,
-            "rank": [
-              {
-                "qual": 8,
-                "use_scores": false,
-                "max_place": "2",
-                "max_time": null,
-                "min_scores": null,
-                "is_active": false,
-                "percent": 0
-              },
-              {
-                "qual": 7,
-                "use_scores": false,
-                "max_place": "6",
-                "max_time": null,
-                "min_scores": null,
-                "is_active": false,
-                "percent": 0
-              },
-              {
-                "qual": 4,
-                "use_scores": true,
-                "max_place": "0",
-                "max_time": null,
-                "min_scores": null,
-                "is_active": true,
-                "percent": 0
-              },
-              {
-                "qual": 5,
-                "use_scores": true,
-                "max_place": "0",
-                "max_time": null,
-                "min_scores": null,
-                "is_active": true,
-                "percent": 0
-              },
-              {
-                "qual": 6,
-                "use_scores": true,
-                "max_place": "0",
-                "max_time": null,
-                "min_scores": null,
-                "is_active": true,
-                "percent": 0
-              },
-              {
-                "qual": 1,
-                "use_scores": true,
-                "max_place": "0",
-                "max_time": null,
-                "min_scores": null,
-                "is_active": false,
-                "percent": 0
-              },
-              {
-                "qual": 2,
-                "use_scores": true,
-                "max_place": "0",
-                "max_time": null,
-                "min_scores": null,
-                "is_active": false,
-                "percent": 0
-              },
-              {
-                "qual": 3,
-                "use_scores": true,
-                "max_place": "0",
-                "max_time": null,
-                "min_scores": null,
-                "is_active": false,
-                "percent": 0
-              }
-            ]
-          },
-          "__type": null,
-          "is_best_team_placing_mode": false,
-          "relay_legs": 0,
-          "sex": 0
-        },
-        {
-          "object": "Group",
-          "id": "b1827a51-ee53-413c-8b9c-dd37a212a00e",
-          "name": "М50",
-          "course_id": "e3af8b4e-e365-4612-a48e-1d2268c067b8",
-          "is_any_course": false,
-          "long_name": "Мъже 50",
-          "price": 0,
-          "min_year": 1970,
-          "max_year": 1960,
-          "min_age": 0,
-          "max_age": 0,
-          "max_time": 7200000,
-          "start_interval": 300000,
-          "start_corridor": 1,
-          "order_in_corridor": 0,
-          "first_number": 0,
-          "count_person": 1,
-          "count_finished": 0,
-          "ranking": {
-            "is_active": false,
-            "rank_scores": 0,
-            "rank": [
-              {
-                "qual": 8,
-                "use_scores": false,
-                "max_place": "2",
-                "max_time": null,
-                "min_scores": null,
-                "is_active": false,
-                "percent": 0
-              },
-              {
-                "qual": 7,
-                "use_scores": false,
-                "max_place": "6",
-                "max_time": null,
-                "min_scores": null,
-                "is_active": false,
-                "percent": 0
-              },
-              {
-                "qual": 4,
-                "use_scores": true,
-                "max_place": "0",
-                "max_time": null,
-                "min_scores": null,
-                "is_active": true,
-                "percent": 0
-              },
-              {
-                "qual": 5,
-                "use_scores": true,
-                "max_place": "0",
-                "max_time": null,
-                "min_scores": null,
-                "is_active": true,
-                "percent": 0
-              },
-              {
-                "qual": 6,
-                "use_scores": true,
-                "max_place": "0",
-                "max_time": null,
-                "min_scores": null,
-                "is_active": true,
-                "percent": 0
-              },
-              {
-                "qual": 1,
-                "use_scores": true,
-                "max_place": "0",
-                "max_time": null,
-                "min_scores": null,
-                "is_active": false,
-                "percent": 0
-              },
-              {
-                "qual": 2,
-                "use_scores": true,
-                "max_place": "0",
-                "max_time": null,
-                "min_scores": null,
-                "is_active": false,
-                "percent": 0
-              },
-              {
-                "qual": 3,
-                "use_scores": true,
-                "max_place": "0",
-                "max_time": null,
-                "min_scores": null,
-                "is_active": false,
-                "percent": 0
-              }
-            ]
-          },
-          "__type": null,
-          "is_best_team_placing_mode": false,
-          "relay_legs": 0,
-          "sex": 0
-        },
-        {
-          "object": "Group",
-          "id": "97e14482-e1a9-4d2c-90a3-07aeba9d40f6",
-          "name": "М21",
-          "course_id": "1466316e-d247-499c-b279-2d5949fb61db",
-          "is_any_course": false,
-          "long_name": "Мъже 21",
+          "long_name": "жени 21",
           "price": 0,
           "min_year": 2004,
           "max_year": 1999,
@@ -508,7 +304,7 @@
           "start_corridor": 1,
           "order_in_corridor": 0,
           "first_number": 0,
-          "count_person": 2,
+          "count_person": 1,
           "count_finished": 0,
           "ranking": {
             "is_active": false,
@@ -697,14 +493,218 @@
         },
         {
           "object": "Group",
-          "id": "2d9a90d2-d7fc-4804-abe8-a743d9ba6ca0",
-          "name": "W21",
-          "course_id": "9a6d3389-8ff1-4a87-8124-ee6fc00f9e58",
+          "id": "97e14482-e1a9-4d2c-90a3-07aeba9d40f6",
+          "name": "М21",
+          "course_id": "1466316e-d247-499c-b279-2d5949fb61db",
           "is_any_course": false,
-          "long_name": "жени 21",
+          "long_name": "Мъже 21",
           "price": 0,
           "min_year": 2004,
           "max_year": 1999,
+          "min_age": 0,
+          "max_age": 0,
+          "max_time": 7200000,
+          "start_interval": 300000,
+          "start_corridor": 1,
+          "order_in_corridor": 0,
+          "first_number": 0,
+          "count_person": 2,
+          "count_finished": 0,
+          "ranking": {
+            "is_active": false,
+            "rank_scores": 0,
+            "rank": [
+              {
+                "qual": 8,
+                "use_scores": false,
+                "max_place": "2",
+                "max_time": null,
+                "min_scores": null,
+                "is_active": false,
+                "percent": 0
+              },
+              {
+                "qual": 7,
+                "use_scores": false,
+                "max_place": "6",
+                "max_time": null,
+                "min_scores": null,
+                "is_active": false,
+                "percent": 0
+              },
+              {
+                "qual": 4,
+                "use_scores": true,
+                "max_place": "0",
+                "max_time": null,
+                "min_scores": null,
+                "is_active": true,
+                "percent": 0
+              },
+              {
+                "qual": 5,
+                "use_scores": true,
+                "max_place": "0",
+                "max_time": null,
+                "min_scores": null,
+                "is_active": true,
+                "percent": 0
+              },
+              {
+                "qual": 6,
+                "use_scores": true,
+                "max_place": "0",
+                "max_time": null,
+                "min_scores": null,
+                "is_active": true,
+                "percent": 0
+              },
+              {
+                "qual": 1,
+                "use_scores": true,
+                "max_place": "0",
+                "max_time": null,
+                "min_scores": null,
+                "is_active": false,
+                "percent": 0
+              },
+              {
+                "qual": 2,
+                "use_scores": true,
+                "max_place": "0",
+                "max_time": null,
+                "min_scores": null,
+                "is_active": false,
+                "percent": 0
+              },
+              {
+                "qual": 3,
+                "use_scores": true,
+                "max_place": "0",
+                "max_time": null,
+                "min_scores": null,
+                "is_active": false,
+                "percent": 0
+              }
+            ]
+          },
+          "__type": null,
+          "is_best_team_placing_mode": false,
+          "relay_legs": 0,
+          "sex": 0
+        },
+        {
+          "object": "Group",
+          "id": "b1827a51-ee53-413c-8b9c-dd37a212a00e",
+          "name": "М50",
+          "course_id": "e3af8b4e-e365-4612-a48e-1d2268c067b8",
+          "is_any_course": false,
+          "long_name": "Мъже 50",
+          "price": 0,
+          "min_year": 1970,
+          "max_year": 1960,
+          "min_age": 0,
+          "max_age": 0,
+          "max_time": 7200000,
+          "start_interval": 300000,
+          "start_corridor": 1,
+          "order_in_corridor": 0,
+          "first_number": 0,
+          "count_person": 1,
+          "count_finished": 0,
+          "ranking": {
+            "is_active": false,
+            "rank_scores": 0,
+            "rank": [
+              {
+                "qual": 8,
+                "use_scores": false,
+                "max_place": "2",
+                "max_time": null,
+                "min_scores": null,
+                "is_active": false,
+                "percent": 0
+              },
+              {
+                "qual": 7,
+                "use_scores": false,
+                "max_place": "6",
+                "max_time": null,
+                "min_scores": null,
+                "is_active": false,
+                "percent": 0
+              },
+              {
+                "qual": 4,
+                "use_scores": true,
+                "max_place": "0",
+                "max_time": null,
+                "min_scores": null,
+                "is_active": true,
+                "percent": 0
+              },
+              {
+                "qual": 5,
+                "use_scores": true,
+                "max_place": "0",
+                "max_time": null,
+                "min_scores": null,
+                "is_active": true,
+                "percent": 0
+              },
+              {
+                "qual": 6,
+                "use_scores": true,
+                "max_place": "0",
+                "max_time": null,
+                "min_scores": null,
+                "is_active": true,
+                "percent": 0
+              },
+              {
+                "qual": 1,
+                "use_scores": true,
+                "max_place": "0",
+                "max_time": null,
+                "min_scores": null,
+                "is_active": false,
+                "percent": 0
+              },
+              {
+                "qual": 2,
+                "use_scores": true,
+                "max_place": "0",
+                "max_time": null,
+                "min_scores": null,
+                "is_active": false,
+                "percent": 0
+              },
+              {
+                "qual": 3,
+                "use_scores": true,
+                "max_place": "0",
+                "max_time": null,
+                "min_scores": null,
+                "is_active": false,
+                "percent": 0
+              }
+            ]
+          },
+          "__type": null,
+          "is_best_team_placing_mode": false,
+          "relay_legs": 0,
+          "sex": 0
+        },
+        {
+          "object": "Group",
+          "id": "63c15af2-67f6-44bc-a667-2413fd1f9779",
+          "name": "M60",
+          "course_id": "c528d97e-f584-4677-a7b6-5c7b32dd1f17",
+          "is_any_course": false,
+          "long_name": "Мъже 60",
+          "price": 0,
+          "min_year": 1940,
+          "max_year": 1960,
           "min_age": 0,
           "max_age": 0,
           "max_time": 7200000,
@@ -800,14 +800,14 @@
       ],
       "results": [
         {
-          "object": "ResultManual",
-          "id": "11e6e2ee-21c4-4468-882d-8c1d08690b82",
+          "object": "ResultLZFox",
+          "id": "34a02a16-7f4e-40c0-9341-f5842c69a757",
           "bib": 0,
-          "system_type": 1,
+          "system_type": 99,
           "person_id": null,
-          "days": 0,
+          "days": 1967,
           "start_time": null,
-          "finish_time": 55986266,
+          "finish_time": 47787020,
           "diff": null,
           "diff_scores": 0,
           "penalty_time": null,
@@ -818,21 +818,21 @@
           "place": 0,
           "assigned_rank": 0,
           "splits": [],
-          "card_number": 0,
+          "card_number": 1996910690,
           "speed": "",
           "scores": 0,
           "rogaine_score": 0,
           "rogaine_penalty": 0,
           "scores_ardf": 0,
-          "created_at": 1585485186.2657268,
+          "created_at": 1750846587.0201285,
           "result": "",
           "result_relay": "",
-          "result_current": "15:33:06",
+          "result_current": "13:16:27",
           "start_msec": 0,
-          "finish_msec": 55986266,
-          "result_msec": 55986000,
-          "result_relay_msec": 55986000,
-          "result_current_msec": 55986000,
+          "finish_msec": 47787020,
+          "result_msec": 47787000,
+          "result_relay_msec": 47787000,
+          "result_current_msec": 47787000,
           "can_win_count": 0,
           "final_result_time": null,
           "order": 0,
@@ -876,72 +876,61 @@
           "final_result_time": null,
           "order": 0,
           "multi_day_results": ""
+        },
+        {
+          "object": "ResultManual",
+          "id": "11e6e2ee-21c4-4468-882d-8c1d08690b82",
+          "bib": 0,
+          "system_type": 1,
+          "person_id": null,
+          "days": 0,
+          "start_time": null,
+          "finish_time": 55986266,
+          "diff": null,
+          "diff_scores": 0,
+          "penalty_time": null,
+          "credit_time": null,
+          "status": 1,
+          "status_comment": "",
+          "penalty_laps": 0,
+          "place": 0,
+          "assigned_rank": 0,
+          "splits": [],
+          "card_number": 0,
+          "speed": "",
+          "scores": 0,
+          "rogaine_score": 0,
+          "rogaine_penalty": 0,
+          "scores_ardf": 0,
+          "created_at": 1585485186.2657268,
+          "result": "",
+          "result_relay": "",
+          "result_current": "15:33:06",
+          "start_msec": 0,
+          "finish_msec": 55986266,
+          "result_msec": 55986000,
+          "result_relay_msec": 55986000,
+          "result_current_msec": 55986000,
+          "can_win_count": 0,
+          "final_result_time": null,
+          "order": 0,
+          "multi_day_results": ""
         }
       ],
       "persons": [
         {
           "object": "Person",
-          "id": "68c7ae07-d6e8-4acd-a3fc-b2b2c5d3ae74",
-          "name": "Ясен",
-          "surname": "Димитъров",
+          "id": "9ef175a2-ef18-4cd7-a9c3-f809e39f8dfb",
+          "name": "Запрян",
+          "surname": "Запрянов",
           "middle_name": "",
-          "card_number": 9999998,
-          "bib": 101,
-          "birth_date": null,
-          "year": 0,
-          "birthday": "",
-          "group_id": "b1827a51-ee53-413c-8b9c-dd37a212a00e",
-          "organization_id": "56a96fec-bb9b-4897-8552-f5f90e256dfc",
-          "world_code": "",
-          "national_code": 0,
-          "qual": 0,
-          "is_out_of_competition": false,
-          "is_paid": false,
-          "is_rented_card": false,
-          "is_personal": false,
-          "comment": "",
-          "start_time": 900000,
-          "start_group": 0,
-          "sex": 0
-        },
-        {
-          "object": "Person",
-          "id": "3a3aceee-755d-449b-896a-30825d2ffff1",
-          "name": "Илияна",
-          "surname": "Калинова",
-          "middle_name": "",
-          "card_number": 1655519701,
-          "bib": 102,
-          "birth_date": null,
-          "year": 0,
-          "birthday": "",
-          "group_id": "2d9a90d2-d7fc-4804-abe8-a743d9ba6ca0",
-          "organization_id": "fbd35c6a-83f6-4e0d-a57d-a964c7267600",
-          "world_code": "",
-          "national_code": 0,
-          "qual": 0,
-          "is_out_of_competition": false,
-          "is_paid": false,
-          "is_rented_card": false,
-          "is_personal": false,
-          "comment": "",
-          "start_time": 0,
-          "start_group": 0,
-          "sex": 0
-        },
-        {
-          "object": "Person",
-          "id": "83fe8097-a0b0-40a3-bbeb-5cfbaacc4816",
-          "name": "Иван",
-          "surname": "Иванов",
-          "middle_name": "",
-          "card_number": 9999999,
-          "bib": 100,
+          "card_number": 9999996,
+          "bib": 103,
           "birth_date": null,
           "year": 0,
           "birthday": "",
           "group_id": "97e14482-e1a9-4d2c-90a3-07aeba9d40f6",
-          "organization_id": "56a96fec-bb9b-4897-8552-f5f90e256dfc",
+          "organization_id": "9f485339-fac8-4a04-ad08-c8ae2d79a2b3",
           "world_code": "",
           "national_code": 0,
           "qual": 0,
@@ -950,7 +939,7 @@
           "is_rented_card": false,
           "is_personal": false,
           "comment": "",
-          "start_time": 600000,
+          "start_time": 300000,
           "start_group": 0,
           "sex": 0
         },
@@ -981,17 +970,17 @@
         },
         {
           "object": "Person",
-          "id": "9ef175a2-ef18-4cd7-a9c3-f809e39f8dfb",
-          "name": "Запрян",
-          "surname": "Запрянов",
+          "id": "83fe8097-a0b0-40a3-bbeb-5cfbaacc4816",
+          "name": "Иван",
+          "surname": "Иванов",
           "middle_name": "",
-          "card_number": 9999996,
-          "bib": 103,
+          "card_number": 9999999,
+          "bib": 100,
           "birth_date": null,
           "year": 0,
           "birthday": "",
           "group_id": "97e14482-e1a9-4d2c-90a3-07aeba9d40f6",
-          "organization_id": "9f485339-fac8-4a04-ad08-c8ae2d79a2b3",
+          "organization_id": "56a96fec-bb9b-4897-8552-f5f90e256dfc",
           "world_code": "",
           "national_code": 0,
           "qual": 0,
@@ -1000,7 +989,57 @@
           "is_rented_card": false,
           "is_personal": false,
           "comment": "",
-          "start_time": 300000,
+          "start_time": 600000,
+          "start_group": 0,
+          "sex": 0
+        },
+        {
+          "object": "Person",
+          "id": "3a3aceee-755d-449b-896a-30825d2ffff1",
+          "name": "Илияна",
+          "surname": "Калинова",
+          "middle_name": "",
+          "card_number": 1655519701,
+          "bib": 102,
+          "birth_date": null,
+          "year": 0,
+          "birthday": "",
+          "group_id": "2d9a90d2-d7fc-4804-abe8-a743d9ba6ca0",
+          "organization_id": "fbd35c6a-83f6-4e0d-a57d-a964c7267600",
+          "world_code": "",
+          "national_code": 0,
+          "qual": 0,
+          "is_out_of_competition": false,
+          "is_paid": false,
+          "is_rented_card": false,
+          "is_personal": false,
+          "comment": "",
+          "start_time": 0,
+          "start_group": 0,
+          "sex": 0
+        },
+        {
+          "object": "Person",
+          "id": "68c7ae07-d6e8-4acd-a3fc-b2b2c5d3ae74",
+          "name": "Ясен",
+          "surname": "Димитъров",
+          "middle_name": "",
+          "card_number": 9999998,
+          "bib": 101,
+          "birth_date": null,
+          "year": 0,
+          "birthday": "",
+          "group_id": "b1827a51-ee53-413c-8b9c-dd37a212a00e",
+          "organization_id": "56a96fec-bb9b-4897-8552-f5f90e256dfc",
+          "world_code": "",
+          "national_code": 0,
+          "qual": 0,
+          "is_out_of_competition": false,
+          "is_paid": false,
+          "is_rented_card": false,
+          "is_personal": false,
+          "comment": "",
+          "start_time": 900000,
           "start_group": 0,
           "sex": 0
         }

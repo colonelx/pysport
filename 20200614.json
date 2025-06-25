@@ -1,28 +1,30 @@
 {
+  "version": "v1.7.1",
   "current_race": 0,
   "races": [
     {
-      "courses": [],
-      "data": {
-        "chief_referee": "",
-        "description": "",
-        "end_datetime": null,
-        "location": "",
-        "race_type": 0,
-        "relay_leg_count": 3,
-        "secretary": "",
-        "start_datetime": null,
-        "title": "",
-        "url": ""
-      },
-      "groups": [],
-      "id": "bb6f05d7-6647-4fa0-a5dc-ba0fc82e5bd6",
       "object": "Race",
+      "id": "bb6f05d7-6647-4fa0-a5dc-ba0fc82e5bd6",
+      "data": {
+        "title": "",
+        "description": "",
+        "location": "",
+        "chief_referee": "",
+        "secretary": "",
+        "url": "",
+        "race_type": 0,
+        "start_datetime": null,
+        "end_datetime": null,
+        "relay_leg_count": 3
+      },
+      "settings": {
+        "live_enabled": false
+      },
       "organizations": [],
-      "persons": [],
+      "courses": [],
+      "groups": [],
       "results": [],
-      "settings": {}
+      "persons": []
     }
-  ],
-  "version": "1.5.0.0"
+  ]
 }
